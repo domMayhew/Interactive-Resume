@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { assertEquals } from 'typia';
-import { Node, Edge } from '@swimlane/ngx-graph';
+import { Node, Edge, ClusterNode } from '../../../../../lib/ngx-graph/projects/swimlane/ngx-graph/src/lib/models';
 
 import { CVData, CVEntry } from 'src/assets/GraphInterface';
 import cvFile from "../assets/cv.json";
@@ -21,25 +21,51 @@ export class CvDataService {
   /**
    * NODES
    */
+  clusterNodes(): ClusterNode[] {
+    const entry2Cluster = (entry: CVEntry, parentId?: string): ClusterNode => {
+      return {
+        id: entry.id,
+        label: entry.label,
+        parentId: parentId,
+        childNodeIds: _.map(entry.children, child => child.id)
+      }
+    }
+
+    const computeSubTree = (parentId?: string) => (entry: CVEntry): Node[] => {
+      if (entry.children) {
+        const currCompound = entry2Cluster(entry);
+        const children = _.flatMap(entry.children, computeSubTree(entry.id));
+        return [currCompound, ...children];
+      } else {
+        return [];
+      }
+    }
+
+    return _.flatMap(this.cvData.entries, computeSubTree());
+  }
+
+
   leafNodes(): Node[] {
-    return this.subTreeNodes(this.cvData.entries);
+    const computeSubTree = (parentId?: string) => (entry: CVEntry): Node[] => {
+      if (!entry.children) {
+        return [this.entry2Node(entry, parentId)];
+      } else {
+        return _.flatMap(entry.children, computeSubTree(entry.id));
+      }
+    }
+
+    return _.flatMap(this.cvData.entries, computeSubTree());
   }
 
-  private subTreeNodes(entries: CVEntry[]): Node[] {
-    return _.flatten(_.map(
-      entries,
-      (entry) => entry.children ? this.subTreeNodes(entry.children) : this.node(entry)
-    ));
-  }
-
-  node(cve: CVEntry): Node {
+  private entry2Node(cve: CVEntry, parentId?: string): Node {
     const width = cve.label.length * this.configService.config.widthFactor;
     const height = this.configService.config.height;
     return {
       ...cve,
-      dimension: {
-        width, height
-      }
+      parentId,
+      // dimension: {
+      //   width, height
+      // }
     }
   }
 

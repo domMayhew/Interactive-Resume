@@ -5,7 +5,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-import { NgxGraphModule } from '@swimlane/ngx-graph';
+import { NgxGraphModule } from '../../../../../lib/ngx-graph/projects/swimlane/ngx-graph/src/lib/ngx-graph.module';
 import { CvDataService } from './cv-data.service';
 
 @NgModule({

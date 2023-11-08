@@ -1,14 +1,12 @@
 import { Component } from '@angular/core';
-import { Node, Edge } from '@swimlane/ngx-graph';
+import { Node, ClusterNode, Edge } from '../../../../../lib/ngx-graph/projects/swimlane/ngx-graph/src/lib/models';
 // import { experienceNodes, edges } from 'src/assets/graph';
 import { CvDataService } from './cv-data.service';
-import { CVData } from 'src/assets/GraphInterface';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  // providers: [CvDataService]
 })
 export class AppComponent {
 
@@ -17,5 +15,7 @@ export class AppComponent {
   readonly title = 'icv';
 
   nodes: Node[] = this.cvDataService.leafNodes();
+  clusters: ClusterNode[] = this.cvDataService.clusterNodes();
   edges: Edge[] = this.cvDataService.edges();
+  click(node: Node): void { };
 }
