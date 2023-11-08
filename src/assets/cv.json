@@ -1,0 +1,48 @@
+{
+  "experiences": {
+    "id": "experiences",
+    "label": "Experiences",
+    "children": [
+      {
+        "id": "visier",
+        "label": "Visier Inc.",
+        "meta": {
+          "Job Title": "Software Development Coop",
+          "Date": "Sep 2022 - Apr 2023",
+          "Duration": "8 months",
+          "Location": "Vancouver, BC (Hybrid)"
+        },
+        "children": [
+          {
+            "id": "batchErrors",
+            "label": "Catch and Handle Batch Job Errors"
+          },
+          {
+            "id": "visierApis",
+            "label": "Create new set of client-facing web APIs"
+          },
+          {
+            "id": "exemplar",
+            "label": "Write an Examle and Test Enablement Application"
+          },
+          {
+            "id": "customSwagger",
+            "label": "Develop a unique UI for API documentation"
+          }
+        ]
+      },
+      {
+        "id": "academic",
+        "label": "Academic"
+      },
+      {
+        "id": "projects",
+        "label": "Projects"
+      },
+      {
+        "id": "life",
+        "label": "Life Experiences"
+      }
+    ]
+  }
+}

@@ -1,5 +1,4 @@
-/* To learn more about this file see: https://angular.io/config/tsconfig. */
-{
+/* To learn more about this file see: https://angular.io/config/tsconfig. */{
   "compileOnSave": false,
   "compilerOptions": {
     "baseUrl": "./",
@@ -22,7 +21,13 @@
     "lib": [
       "ES2022",
       "dom"
-    ]
+    ],
+    "plugins": [
+      {
+        "transform": "typia/lib/transform"
+      }
+    ],
+    "strictNullChecks": true
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
