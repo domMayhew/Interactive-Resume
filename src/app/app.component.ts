@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
-import { Node } from '@swimlane/ngx-graph';
-import { assertEquals } from 'typia';
+import { Node, Edge } from '@swimlane/ngx-graph';
 // import { experienceNodes, edges } from 'src/assets/graph';
 import { CvDataService } from './cv-data.service';
-import cvJson from '../assets/cv.json';
+import { CVData } from 'src/assets/GraphInterface';
 
 @Component({
   selector: 'app-root',
@@ -15,10 +14,8 @@ export class AppComponent {
 
   constructor(private readonly cvDataService: CvDataService) { };
 
-  title = 'icv';
+  readonly title = 'icv';
 
-  ngOnInit() {
-    // console.log(this.cvDataService.cvData);
-    console.log(cvJson);
-  }
+  nodes: Node[] = this.cvDataService.leafNodes();
+  edges: Edge[] = this.cvDataService.edges();
 }

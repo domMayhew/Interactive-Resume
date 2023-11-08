@@ -1,5 +1,6 @@
 interface CVData {
-  [key: string]: CVEntry
+  entries: CVEntry[];
+  edges: [string, string][];
   // experiences: Experience[];
   // skills: Skill[];
   // technologies: Technology[];
@@ -10,7 +11,6 @@ interface CVEntry {
   label: string;
   meta?: Meta;
   children?: CVEntry[];
-  adjacent?: CVEntry[];
 }
 
 interface Experience extends CVEntry {
@@ -23,18 +23,6 @@ interface Experience extends CVEntry {
 interface Meta {
   [key: string]: string;
 }
-
-// interface Skill {
-//   name: string;
-//   id: string;
-//   subskills?: Skill[]
-// }
-
-// interface Technology {
-//   name: string;
-//   id: string;
-//   subTechnologies?: Technology[];
-// }
 
 export type {
   CVData,
