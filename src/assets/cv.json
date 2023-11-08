@@ -7,34 +7,76 @@
         {
           "id": "visier",
           "label": "Visier Inc.",
-          "meta": {
-            "Job Title": "Software Development Coop",
-            "Date": "Sep 2022 - Apr 2023",
-            "Duration": "8 months",
-            "Location": "Vancouver, BC (Hybrid)"
-          },
+          "title": "Software Development Coop",
+          "start": [
+            2022,
+            9
+          ],
+          "end": [
+            2023,
+            4
+          ],
+          "location": "Vancouver, BC (Hybrid)",
+          "description": "./markdown/visier-description.md",
           "children": [
             {
               "id": "batchErrors",
-              "label": "Catch and Handle Batch Job Errors"
+              "label": "Catch and Handle Batch Job Errors",
+              "description": "Batch jobs needed a configuration option to fail and stop processing when any of its children failed. I *designed* a few different solutions and *collaborated with cross-team stakeholders* to choose the best design, implement the design, and write *automated tests*. I demonstrated *flexibility* when we decided to switch to a different design after implementation.",
+              "neighbours": [
+                "crossteamCollaboration",
+                "architectureAndDesign",
+                "automatedTesting",
+                "scala",
+                "scalaTest",
+                "flexibility"
+              ]
             },
             {
               "id": "visierApis",
-              "label": "Create new set of client-facing web APIs"
+              "label": "Create a new set client-facing RESTful API endpoints",
+              "description": "I deployed new endpoints that added new features and formatting to existing endpoints. I worked with *Protobuf* definitions (and even wrote a custom converter from Protobuf Java objects to Scala objects to support a more OpenAPI-like message format), *user authentication*, *technical documentation*, and collaboration with my *product manager*. After I completed my work, I guided less experienced coops as they built on top of the code I wrote. I also provided *code review* with meaningful feedback for their work.",
+              "neighbours": [
+                "restfulApis",
+                "protobuf",
+                "http",
+                "codeReview",
+                "leadership",
+                "communication",
+                "scala"
+              ]
             },
             {
               "id": "exemplar",
-              "label": "Write an Examle and Test Enablement Application"
+              "label": "Write an Examle and Test Enablement Application",
+              "description": "I created a public repo of a locally-hosted web application that embeds Visier's software in less than five minutes configuration. Visier's offerings include an embedded SasS product for enterprise customers. Those customers often found onboarding challenging. Embedding a SasS product into your own has complications surrounding *CORS policies*, cross-site scripting, and authentication (in this case, SAML 2.0). I wrote an application that provided:\n\n1. A live example of embedding Visier's software in **less than five minutes configuration**.\n1. Example code that users could duplicate in their own application.\n1. A live reference of working SAML authentications.\n1. Extensive technical documentation.\n\nThe project is published on [Visier's public GitHub](https://github.com/visier/embedding-exemplar).",
+              "neighbours": [
+                "embeddedSass",
+                "saml",
+                "sso",
+                "javascript",
+                "express",
+                "technicalDocumentation"
+              ]
             },
             {
               "id": "customSwagger",
-              "label": "Develop a unique UI for API documentation"
+              "label": "Develop a unique UI for API documentation",
+              "description": "I wrote custom React components for SwaggerUI to create a unique API documentation UI according to a Figma specification provided by the UX team. Although I need some initial help to determine the best approach for customizing SwaggerUI, I showed my *resourceful* and *self-starting* nature by learning React, understanding the SwaggerUI architecture, and implmenting several different designs without significant help.",
+              "neighbours": [
+                "swaggerUi",
+                "openApi",
+                "react",
+                "resourceful",
+                "typescript"
+              ]
             }
           ]
         },
         {
           "id": "academic",
-          "label": "Academic"
+          "label": "Academic",
+          "description": "./markdown/academic-description.md"
         },
         {
           "id": "projects",
@@ -51,12 +93,32 @@
       "label": "Skills",
       "children": [
         {
+          "id": "crossteamCollaboration",
+          "label": "Cross-team collaboration"
+        },
+        {
+          "id": "architectureAndDesign",
+          "label": "Develop and communicate software *architecture* and *designs*"
+        },
+        {
+          "id": "automatedTesting",
+          "label": "Perform automated unit, integration, and end-to-end tests"
+        },
+        {
           "id": "analyzeRequirements",
           "label": "*Analyze* and *design* functional, nonfunctional, and security *requirements*"
         },
         {
-          "id": "developArchitecture",
-          "label": "Develop and communicate software *architecture* and *designs*"
+          "id": "codeReview",
+          "label": "Recieve and provide meaningful code review"
+        },
+        {
+          "id": "communication",
+          "label": "Technical and nontechnical communication"
+        },
+        {
+          "id": "technicalDocumentation",
+          "label": "Technical Documentation"
         }
       ]
     },
@@ -97,18 +159,92 @@
               "label": "Bash"
             }
           ]
+        },
+        {
+          "id": "testFrameworks",
+          "label": "Test Frameworks",
+          "children": [
+            {
+              "id": "scalaTest",
+              "label": "Scala Test"
+            }
+          ]
+        },
+        {
+          "id": "webFrameworks",
+          "label": "Web Frameworks",
+          "children": [
+            {
+              "id": "express",
+              "label": "Express"
+            },
+            {
+              "id": "angular",
+              "label": "Angular"
+            },
+            {
+              "id": "react",
+              "label": "React"
+            }
+          ]
+        },
+        {
+          "id": "webTechnologies",
+          "label": "Web Technologies",
+          "children": [
+            {
+              "id": "restfulApis",
+              "label": "RESTful APIs"
+            },
+            {
+              "id": "protobuf",
+              "label": "Protobuf"
+            },
+            {
+              "id": "swaggerUi",
+              "label": "SwaggerUI"
+            },
+            {
+              "id": "openApi",
+              "label": "OpenAPI"
+            },
+            {
+              "id": "http",
+              "label": "HTTP(S)"
+            },
+            {
+              "id": "embeddedSass",
+              "label": "Embedded SasS Solutions"
+            },
+            {
+              "id": "saml",
+              "label": "SAML2"
+            },
+            {
+              "id": "sso",
+              "label": "SSO"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "characterTraits",
+      "label": "Character Traits",
+      "children": [
+        {
+          "id": "flexibility",
+          "label": "Flexibility"
+        },
+        {
+          "id": "leadership",
+          "label": "Leadership"
+        },
+        {
+          "id": "resourceful",
+          "label": "Resourceful"
         }
       ]
     }
-  ],
-  "edges": [
-    [
-      "batchErrors",
-      "scala"
-    ],
-    [
-      "visierApis",
-      "analyzeRequirements"
-    ]
   ]
 }

@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { Node, ClusterNode, Edge } from '../../../../../lib/ngx-graph/projects/swimlane/ngx-graph/src/lib/models';
-// import { experienceNodes, edges } from 'src/assets/graph';
+import { Node, ClusterNode, Edge } from '@swimlane/ngx-graph';
 import { CvDataService } from './cv-data.service';
 
 @Component({
@@ -18,4 +17,13 @@ export class AppComponent {
   clusters: ClusterNode[] = this.cvDataService.clusterNodes();
   edges: Edge[] = this.cvDataService.edges();
   click(node: Node): void { };
+
+  mdPath: string = './assets/visier-description.md';
+  isMouseOver = false;
+
+  mouseover(): void {
+    this.isMouseOver = true;
+    window.alert('moused');
+    console.log('moused');
+  }
 }

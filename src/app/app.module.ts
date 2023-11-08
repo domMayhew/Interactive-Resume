@@ -1,12 +1,15 @@
-import { NgModule } from '@angular/core';
+import { NgModule, SecurityContext } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-import { NgxGraphModule } from '../../../../../lib/ngx-graph/projects/swimlane/ngx-graph/src/lib/ngx-graph.module';
+import { NgxGraphModule } from '@swimlane/ngx-graph';
+import { MarkdownModule } from 'ngx-markdown';
 import { CvDataService } from './cv-data.service';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpHandler } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -16,7 +19,9 @@ import { CvDataService } from './cv-data.service';
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    NgxGraphModule
+    NgxGraphModule,
+    HttpClientModule,
+    MarkdownModule.forRoot({ loader: HttpClient, sanitize: SecurityContext.NONE })
   ],
   providers: [CvDataService],
   bootstrap: [AppComponent]

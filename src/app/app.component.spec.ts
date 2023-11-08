@@ -1,7 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
-import { NgxGraphModule } from '../../../../../lib/ngx-graph/projects/swimlane/ngx-graph/src/lib/ngx-graph.module';
+import { NgxGraphModule } from '@swimlane/ngx-graph';
 
 describe('AppComponent', () => {
   beforeEach(async () => {

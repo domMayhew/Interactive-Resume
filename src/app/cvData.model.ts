@@ -1,9 +1,6 @@
 interface CVData {
   entries: CVEntry[];
   edges: [string, string][];
-  // experiences: Experience[];
-  // skills: Skill[];
-  // technologies: Technology[];
 }
 
 interface CVEntry {
@@ -14,10 +11,11 @@ interface CVEntry {
 }
 
 interface Experience extends CVEntry {
-  start: Date;
-  end: Date;
+  start: [number, number];
+  end: [number, number];
   location: string;
   title: string;
+  description: string;
 }
 
 interface Meta {

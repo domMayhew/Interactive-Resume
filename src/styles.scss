@@ -1,8 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
 html,
 body,
-app-root {
+app-root,
+app-root div {
   display: block;
-  height: 40000px;
-  width: 40000px;
+  height: 4000px;
+  width: 4000px;
+}
+
+@font-face {
+  font-family: "Lora";
+  src:
+    local("Lora"),
+    url("./assets/fonts/Lora-VariableFont_wght.ttf") format('truetype');
 }

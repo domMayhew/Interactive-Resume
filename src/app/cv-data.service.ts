@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { assertEquals } from 'typia';
-import { Node, Edge, ClusterNode } from '../../../../../lib/ngx-graph/projects/swimlane/ngx-graph/src/lib/models';
+import { assert } from 'typia';
+import { Node, Edge, ClusterNode } from '@swimlane/ngx-graph';
 
-import { CVData, CVEntry } from 'src/assets/GraphInterface';
+import { CVData, CVEntry } from 'src/app/cvData.model';
 import cvFile from "../assets/cv.json";
 import { ConfigService } from './config-service';
 import * as _ from 'lodash';
@@ -14,7 +14,7 @@ export class CvDataService {
   readonly cvData: CVData;
 
   constructor(private configService: ConfigService) {
-    assertEquals<CVData>(cvFile);
+    assert<CVData>(cvFile);
     this.cvData = cvFile as CVData;
   }
 

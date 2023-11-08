@@ -1,71 +1,78 @@
-<ngx-graph [nodes]="nodes"
-	[clusters]="clusters"
-	[links]="edges"
-	[draggingEnabled]="false"
-	[panningEnabled]="true"
-	[showMiniMap]="true"
-	[animate]="false"
-	layout="dagreCluster">
-	<ng-template #nodeTemplate
-		let-node>
-		<!-- <ng-container *ngIf="node.childNodeIds"
-			(dblclick)="click(node)">
-			<svg version="1.1"
-				attr.width="{{node.dimension.width*node.childNodeIds.length}}"
-				attr.height="{{node.dimension.height*node.childNodeIds.length}}"
-				xmlns="http://www.w3.org/2000/svg">
+<div>
+	<div *ngIf="isMouseOver"
+		style="position: fixed">
+		<h1>FUCK YA</h1>
+	</div>
+	<ngx-graph [nodes]="nodes"
+		[clusters]="clusters"
+		[links]="edges"
+		[draggingEnabled]="false"
+		[panningEnabled]="true"
+		[showMiniMap]="true"
+		[animate]="false"
+		layout="dagreCluster">
+		<ng-template #nodeTemplate
+			let-node>
+			<!-- <ng-container *ngIf="node.childNodeIds"
+	(dblclick)="click(node)">
+	<svg version="1.1"
+		attr.width="{{node.dimension.width*node.childNodeIds.length}}"
+		attr.height="{{node.dimension.height*node.childNodeIds.length}}"
+		xmlns="http://www.w3.org/2000/svg">
 
-				<rect x="0"
-					y="0"
-					attr.width="{{node.dimension.width*node.childNodeIds.length}}"
-					attr.height="{{node.dimension.height*node.childNodeIds.length}}"
-					rx="5"
-					ry="5"
-					fill="white"
-					fill-opacity="0"
-					stroke="red"></rect>
-				<text attr.x="{{node.dimension.width}}"
-					y="0"
-					text-anchor="middle"
-					dominant-baseline="hanging">
-					{{node.label}}
-				</text>
-			</svg>
-		</ng-container> -->
-		<ng-container *ngIf="!node.childNodeIds">
-			<svg (dblclick)="click(node)"
-				version="1.1"
-				attr.width="{{node.dimension.width}}"
-				attr.height="{{node.dimension.height}}"
-				xmlns="http://www.w3.org/2000/svg">
-
-				<rect x="0"
-					y="0"
+		<rect x="0"
+			y="0"
+			attr.width="{{node.dimension.width*node.childNodeIds.length}}"
+			attr.height="{{node.dimension.height*node.childNodeIds.length}}"
+			rx="5"
+			ry="5"
+			fill="white"
+			fill-opacity="0"
+			stroke="red"></rect>
+		<text attr.x="{{node.dimension.width}}"
+			y="0"
+			text-anchor="middle"
+			dominant-baseline="hanging">
+			{{node.label}}
+		</text>
+	</svg>
+</ng-container> -->
+			<ng-container *ngIf="!node.childNodeIds">
+				<svg (dblclick)="click(node)"
+					(mouseover)="mouseover()"
+					version="1.1"
 					attr.width="{{node.dimension.width}}"
 					attr.height="{{node.dimension.height}}"
-					rx="5"
-					ry="5"
-					fill="white"
-					fill-opacity="0"
-					stroke="red"></rect>
-				<text attr.x="{{node.dimension.width/2}}"
-					attr.y="{{node.dimension.height/2}}"
-					text-anchor="middle"
-					dominant-baseline="middle">
-					{{node.label}}
-				</text>
+					xmlns="http://www.w3.org/2000/svg">
+
+					<rect x="0"
+						y="0"
+						attr.width="{{node.dimension.width}}"
+						attr.height="{{node.dimension.height}}"
+						rx="5"
+						ry="5"
+						fill="white"
+						fill-opacity="0"
+						stroke="red"></rect>
+					<text attr.x="{{node.dimension.width/2}}"
+						attr.y="{{node.dimension.height/2}}"
+						text-anchor="middle"
+						dominant-baseline="middle">
+						{{node.label}}
+					</text>
+				</svg>
+			</ng-container>
+		</ng-template>
+		<ng-template #clusterTemplate
+			let-cluster>
+			<svg (dblclick)="click(cluster)">
+				<rect attr.width="{{cluster.dimension.width}}"
+					attr.height="{{cluster.dimension.height}}"
+					rx="100"
+					ry="100"
+					fill="green"
+					fill-opacity="0.2"></rect>
 			</svg>
-		</ng-container>
-	</ng-template>
-	<ng-template #clusterTemplate
-		let-cluster>
-		<svg (dblclick)="click(cluster)">
-			<rect attr.width="{{cluster.dimension.width}}"
-				attr.height="{{cluster.dimension.height}}"
-				rx="100"
-				ry="100"
-				fill="green"
-				fill-opacity="0.2"></rect>
-		</svg>
-	</ng-template>
-</ngx-graph>
+		</ng-template>
+	</ngx-graph>
+</div>
