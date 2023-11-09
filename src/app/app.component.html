@@ -11,10 +11,10 @@
 
 	<ng-template #nodeTemplate
 		let-node>
-		<svg [class]="node.meta.class"
-			(mouseover)="mouseoverNode(node)"
-			(mouseleave)="mouseleaveNode(node)"
-			(dblclick)="doubleClick(node)"
+		<svg [class]="node.data.connected ? 'node-container connected' : 'node-container'"
+			(mouseover)="setConnections(node, node.data.path, true)"
+			(mouseleave)="setConnections(node, node.data.path, false)"
+			(dblclick)="expandCollapse(node.data.path)"
 			version="1.1"
 			xmlns="http://www.w3.org/2000/svg">
 			<rect class="node-rect"
@@ -39,19 +39,19 @@
 	</ng-template>
 	<ng-template #clusterTemplate
 		let-cluster>
-		<svg (dblclick)="doubleClick(cluster)"
-			(mouseleave)="mouseleave(cluster, $event)"
-			(mouseenter)="mouseenter(cluster, $event)"
-			xmlns="http://www.w3.org/2000/svg"
-			class="cluster-container">
+		<svg [class]="cluster.data.connected ? 'cluster-container connected' : 'cluster-container'"
+			(dblclick)="expandCollapse(cluster.data.path)"
+			(mouseleave)="clusterMouseLeave($event)"
+			(mouseenter)="clusterMouseEnter($event)"
+			xmlns="http://www.w3.org/2000/svg">
 			<clipPath id="cluster-text-bar-clip">
 				<rect attr.width={{cluster.dimension.width*4}}
-					attr.height="{{50}}"></rect>
+					attr.height="{{40}}"></rect>
 			</clipPath>
 			<rect class="cluster-rect"
 				attr.width={{cluster.dimension.width-20}}
 				attr.height={{cluster.dimension.height}}
-				transform="translate(10,11)"
+				transform="translate(10,1)"
 				rx="2"
 				ry="2"
 				stroke="slategrey"
@@ -65,13 +65,13 @@
 				attr.height={{cluster.dimension.height}}
 				rx="2"
 				ry="2"
-				transform="translate(10,11)"
+				transform="translate(10,1)"
 				fill="slategrey"
 				fill-opacity="0.5"
 				clip-path="url(#cluster-text-bar-clip)"></rect>
 			<text class="cluster-text"
 				attr.x="{{(cluster.dimension.width)/2}}"
-				y="28"
+				y="11"
 				font-family="sans-serif"
 				font-size="20"
 				text-anchor="middle"
@@ -84,7 +84,7 @@
 		let-link>
 		<svg>
 			<path [attr.d]="link.line"
-				[attr.class]="link.data.class"
+				[class]="link.data.connected ? 'edge connected' : 'edge'"
 				stroke-width="1"
 				stroke-opacity="0.2"></path>
 		</svg>

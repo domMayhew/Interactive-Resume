@@ -8,6 +8,8 @@ interface ResumeTree {
   readonly id: string,
   readonly label: string,
   readonly description?: string,
+  readonly path?: string[],
+  connected?: boolean,
   readonly children?: (Experience | ResumeTree)[],
   readonly neighbours?: string[],
   expanded?: boolean,

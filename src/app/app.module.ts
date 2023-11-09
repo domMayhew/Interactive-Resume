@@ -8,7 +8,7 @@ import { AppComponent } from './app.component';
 import { NgxGraphModule } from '@swimlane/ngx-graph';
 // import { MarkdownModule } from 'ngx-markdown';
 import { CvDataService } from './cvGraph/cv-data.service';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { ConfigService } from './config-service';
 
 @NgModule({
   declarations: [
@@ -19,10 +19,8 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     BrowserAnimationsModule,
     AppRoutingModule,
     NgxGraphModule,
-    HttpClientModule,
-    // MarkdownModule.forRoot({ loader: HttpClient, sanitize: SecurityContext.NONE })
   ],
-  providers: [CvDataService],
+  providers: [CvDataService, ConfigService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

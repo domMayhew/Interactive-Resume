@@ -2,8 +2,9 @@ import { Component } from '@angular/core';
 import { Node, ClusterNode, Edge, Graph } from '@swimlane/ngx-graph';
 import { CvDataService } from './cvGraph/cv-data.service';
 import { Resume, ResumeTree } from './cvGraph/cvData.model';
-import { assert, is } from 'typia';
-import { Observable, Subject } from 'rxjs';
+import { assert } from 'typia';
+import { Observable, Subject, config } from 'rxjs';
+import { ConfigService } from './config-service';
 
 @Component({
   selector: 'app-root',
@@ -13,18 +14,15 @@ import { Observable, Subject } from 'rxjs';
 })
 export class AppComponent {
 
-  constructor(private readonly cvDataService: CvDataService) {
-  };
+  constructor(private readonly cvDataService: CvDataService, private readonly config: ConfigService) { };
 
   readonly title = 'icv';
 
-  layoutSettings = { multigraph: false, nodePadding: 20, edgePadding: 50 };
-  layout = "dagreCluster";
-  private readonly resume: Resume = this.cvDataService.getInitResume();
-  graph: Graph = this.cvDataService.buildGraph(this.resume);
+  public readonly layoutSettings = this.config.layoutSettings;
+  public readonly layout = this.config.layout;
 
-  mdPath: string = './assets/visier-description.md';
-  isMouseOver = false;
+  private resume: Resume = this.cvDataService.buildResume(this.config.jsonResume);
+  graph: Graph = this.cvDataService.buildGraph(this.resume);
 
   updateSub$: Subject<boolean> = new Subject();
   updateObs$: Observable<boolean> = this.updateSub$.asObservable();
@@ -32,52 +30,46 @@ export class AppComponent {
   // panToNodeSub$: Subject<Node> = new Subject();
   // panToNodeObs$: Observable<Node> = this.panToNodeSub$.asObservable();
 
-
   connectedEdges(node: Node): Edge[] {
     return this.graph.edges.filter(e => e.source == node.id || e.target == node.id);
   }
 
-  mouseoverNode(node: Node): void {
-    // Reset edges
-    this.graph.edges.forEach(e => e.data = { class: "edge" });
-    // Update edges
-    this.connectedEdges(node)
-      .forEach(e => {
-        e.data = { class: "edge connected" }
-      });
-    // Set nodes
-    this.graph.nodes.forEach(n => {
-      if (this.connectedEdges(node)
-        .find(e => e.source == n.id || e.target == n.id)) {
-        n.meta.class = "node-container connected";
+  setConnections(node: Node, path: string[], isConnected: boolean): void {
+    const neighbours = this.graph.edges.flatMap(e => {
+      if (e.source === node.id) {
+        e.data.connected = isConnected;
+        return [e.target];
+      } else if (e.target === node.id) {
+        e.data.connected = isConnected;
+        return [e.source];
       } else {
-        n.meta.class = "node-container";
+        e.data.isConnected = false;
+        return [];
       }
     });
 
-    this.updateSub$.next(true);
+    this.graph.nodes.map(n => {
+      if (neighbours.includes(n.id) || n.id === node.id) {
+        n.data.connected = isConnected;
+      } else {
+        n.data.connected = false;
+      }
+    });
   }
 
-  mouseleaveNode(node: Node): void {
-    this.graph.edges.forEach(e => e.data = { class: "edge" });
-    this.graph.nodes.forEach(n => n.meta.class = "node-container");
-    this.updateSub$.next(true);
-  }
-
-  doubleClick(node: Node): void {
-    const rTree = assert<ResumeTree>(node.data);
-    this.cvDataService.toggleExpanded(rTree);
+  expandCollapse(path: string[]): void {
+    this.resume = this.cvDataService.toggleExpanded(this.resume, path);
     this.graph = this.cvDataService.buildGraph(this.resume);
   }
 
-  mouseenter(cluster: Node, event: MouseEvent): void {
+  clusterMouseEnter(event: MouseEvent): void {
     const el: Element = event.target as Element;
     if (!el.classList.contains("hovered")) {
       el.classList.add("hovered");
     }
   }
 
-  mouseleave(cluster: Node, event: MouseEvent): void {
+  clusterMouseLeave(event: MouseEvent): void {
     const el: Element = event.target as Element;
     const boundingRect = el.getBoundingClientRect();
 

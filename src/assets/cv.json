@@ -2,7 +2,7 @@
   "entries": [
     {
       "id": "experiences",
-      "label": "Experiences",
+      "label": "Work Experiences",
       "expanded": true,
       "children": [
         {
@@ -73,21 +73,21 @@
               ]
             }
           ]
-        },
-        {
-          "id": "academic",
-          "label": "Academic",
-          "description": "./markdown/academic-description.md"
-        },
-        {
-          "id": "projects",
-          "label": "Projects"
-        },
-        {
-          "id": "life",
-          "label": "Life Experiences"
         }
       ]
+    },
+    {
+      "id": "academic",
+      "label": "Academic",
+      "description": "./markdown/academic-description.md"
+    },
+    {
+      "id": "projects",
+      "label": "Projects"
+    },
+    {
+      "id": "life",
+      "label": "Life Experiences"
     },
     {
       "id": "skills",

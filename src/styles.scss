@@ -2,7 +2,7 @@
 app-root {
   display: block;
   height: 300vh;
-  width: 100vw;
+  width: 1000vw;
   background-color: azure;
 }
 
@@ -39,16 +39,18 @@ app-root {
   pointer-events: none;
 }
 
-.connected {
-  stroke-width: 2px;
-  stroke-opacity: 1;
-  filter: drop-shadow(0 0 3px rgb(255 255 0 / 0.2));
-}
-
+.connected,
 .connected>rect {
   stroke-width: 2px;
+  stroke-opacity: 1;
+  filter: drop-shadow(0 0 4px rgb(255 255 0 / 0.3));
 }
 
-svg:not(.cluster-text) {
+svg {
   font-size: 16px;
+  font-family: Lora;
+}
+
+svg.cluster-text {
+  font-size: 24px;
 }
