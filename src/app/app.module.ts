@@ -10,10 +10,20 @@ import { NgxGraphModule } from '@swimlane/ngx-graph';
 import { ResumeService } from './resume/resume.service';
 import { ConfigService } from './config-service';
 import { VectorDate } from './datePipe';
+import { DetailsComponent } from './details/details.component';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
+import { ExperienceSubtitleComponent } from './details/subtitle/experience-subtitle.component';
+import { MarkdownModule } from 'ngx-markdown';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { MatIconModule } from '@angular/material/icon';
+
 
 @NgModule({
   declarations: [
     AppComponent,
+    DetailsComponent,
+    ExperienceSubtitleComponent,
   ],
   imports: [
     BrowserModule,
@@ -21,6 +31,11 @@ import { VectorDate } from './datePipe';
     AppRoutingModule,
     NgxGraphModule,
     VectorDate,
+    MatCardModule,
+    MatButtonModule,
+    HttpClientModule,
+    MarkdownModule.forRoot({ loader: HttpClient }),
+    MatIconModule
   ],
   providers: [ResumeService, ConfigService],
   bootstrap: [AppComponent]

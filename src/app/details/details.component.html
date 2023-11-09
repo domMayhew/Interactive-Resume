@@ -1,0 +1,33 @@
+<div class="card-container">
+	<mat-card>
+		<mat-card-header>
+			<div class="mat-typography card-button-close">
+				<button (click)="close.emit()"
+					mat-icon-button
+					color="warn">
+					<mat-icon>close</mat-icon>
+				</button>
+			</div>
+
+			<mat-card-title>
+				<div class="card-title-container">
+					<div>{{title()}}</div>
+					<div *ngIf='altTitle()'
+						class="alt-title">
+						{{altTitle()}}
+					</div>
+				</div>
+			</mat-card-title>
+			<mat-card-subtitle>
+				<app-experience-subtitle *ngIf="isExperience()"
+					[experience]="rTreeAsExperience()!"></app-experience-subtitle>
+				<p *ngIf="!isExperience()">Not experience</p>
+			</mat-card-subtitle>
+		</mat-card-header>
+		<mat-card-content>
+			<markdown>
+				This is a *description* of **my experience** at Visier.
+			</markdown>
+		</mat-card-content>
+	</mat-card>
+</div>

@@ -1,12 +1,18 @@
 import { Pipe, PipeTransform } from "@angular/core";
+import typia from "typia";
 
 @Pipe({
   standalone: true,
   name: 'vectorDate'
 })
 export class VectorDate implements PipeTransform {
-  transform(value: [number, number]): string {
-    const month = value[1] < 10 ? '0' + value[1] : value[1];
-    return value[0] + "/" + month;
+  transform(value: [number, number] | undefined): string {
+    if (value === undefined) {
+      return 'Present'
+    } else {
+      const [year, month] = typia.assertEquals<[number, number]>(value);
+      const paddedMonth = month < 10 ? '0' + month : month;
+      return year + '/' + paddedMonth;
+    }
   }
 }

@@ -1,9 +1,10 @@
-/* You can add global styles to this file, and also import other style files */
-app-root {
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
+
+div.app-container {
   display: block;
   height: 300vh;
-  width: 1000vw;
-  background-color: azure;
+  width: 300vw;
+  background-color: #626b6b3b;
 }
 
 @font-face {

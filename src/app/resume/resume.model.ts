@@ -16,7 +16,7 @@ interface ResumeTree {
 }
 
 interface Experience extends ResumeTree {
-  readonly start?: [number, number],
+  readonly start: [number, number],
   readonly end?: [number, number],
   readonly location?: string,
   readonly title?: string,

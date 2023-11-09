@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Node, Edge, Graph } from '@swimlane/ngx-graph';
 import { ResumeService } from './resume/resume.service';
-import { Resume } from './resume/resume.model';
+import { Resume, ResumeTree } from './resume/resume.model';
 import { Observable, Subject } from 'rxjs';
 import { ConfigService } from './config-service';
 
@@ -23,8 +23,8 @@ export class AppComponent {
   private resume: Resume = this.resumeService.buildResume(this.config.jsonResume);
   graph: Graph = this.resumeService.buildGraph(this.resume);
 
-  updateSub$: Subject<boolean> = new Subject();
-  updateObs$: Observable<boolean> = this.updateSub$.asObservable();
+  selectedRTree: ResumeTree = this.resume.entries[0];
+  detailsOpen: boolean = false;
 
   // panToNodeSub$: Subject<Node> = new Subject();
   // panToNodeObs$: Observable<Node> = this.panToNodeSub$.asObservable();
@@ -55,6 +55,12 @@ export class AppComponent {
       }
     });
   }
+
+  showDetails(rTree: ResumeTree): void {
+    this.selectedRTree = rTree;
+    this.detailsOpen = true;
+  }
+  closeDetails(): void { this.detailsOpen = false };
 
   expandCollapse(path: string[]): void {
     this.resume = this.resumeService.toggleExpanded(this.resume, path);
