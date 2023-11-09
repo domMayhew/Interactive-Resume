@@ -5,18 +5,21 @@
 	[panningEnabled]="true"
 	[showMiniMap]="true"
 	[animate]="true"
+	[update$]="updateObs$"
 	[layout]="layout"
 	[layoutSettings]="layoutSettings">
 
 	<ng-template #nodeTemplate
 		let-node>
-		<svg (dblclick)="doubleClick(node)"
+		<svg [class]="node.meta.class"
+			(mouseover)="mouseoverNode(node)"
+			(mouseleave)="mouseleaveNode(node)"
+			(dblclick)="doubleClick(node)"
 			version="1.1"
-			xmlns="http://www.w3.org/2000/svg"
-			class="node-container">
+			xmlns="http://www.w3.org/2000/svg">
 			<rect class="node-rect"
-				attr.width="{{node.dimension.width}}"
-				attr.height="{{node.dimension.height}}"
+				attr.width={{node.dimension.width}}
+				attr.height={{node.dimension.height}}
 				transform="translate(1,1)"
 				rx="2"
 				ry="2"
@@ -42,12 +45,12 @@
 			xmlns="http://www.w3.org/2000/svg"
 			class="cluster-container">
 			<clipPath id="cluster-text-bar-clip">
-				<rect attr.width="{{cluster.dimension.width-20}}"
-					attr.height="{{60}}"></rect>
+				<rect attr.width={{cluster.dimension.width*4}}
+					attr.height="{{50}}"></rect>
 			</clipPath>
 			<rect class="cluster-rect"
-				attr.width="{{cluster.dimension.width-20}}"
-				attr.height="{{cluster.dimension.height}}"
+				attr.width={{cluster.dimension.width-20}}
+				attr.height={{cluster.dimension.height}}
 				transform="translate(10,11)"
 				rx="2"
 				ry="2"
@@ -58,8 +61,8 @@
 			</rect>
 			<rect class="cluster-text-bar"
 				id="cluster-text-bar"
-				attr.width="{{cluster.dimension.width-20}}"
-				attr.height="{{cluster.dimension.height}}"
+				attr.width={{cluster.dimension.width-20}}
+				attr.height={{cluster.dimension.height}}
 				rx="2"
 				ry="2"
 				transform="translate(10,11)"
@@ -68,13 +71,22 @@
 				clip-path="url(#cluster-text-bar-clip)"></rect>
 			<text class="cluster-text"
 				attr.x="{{(cluster.dimension.width)/2}}"
-				y="31"
+				y="28"
 				font-family="sans-serif"
 				font-size="20"
 				text-anchor="middle"
 				dominant-baseline="hanging">
 				{{cluster.label}}
 			</text>
+		</svg>
+	</ng-template>
+	<ng-template #linkTemplate
+		let-link>
+		<svg>
+			<path [attr.d]="link.line"
+				[attr.class]="link.data.class"
+				stroke-width="1"
+				stroke-opacity="0.2"></path>
 		</svg>
 	</ng-template>
 </ngx-graph>

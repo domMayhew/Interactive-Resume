@@ -88,7 +88,8 @@ export class CvDataService {
       }
     }
 
-    return _.flatMap(resume.entries, entry => computeSubTree()(entry));
+    const variableWidthNodes = _.flatMap(resume.entries, entry => computeSubTree()(entry));
+    return _.map(variableWidthNodes, n => n.dimension = Object.assign(n, { height: n.dimension?.height || 30, width: 200 }));
   }
 
   /*
@@ -151,6 +152,9 @@ export class CvDataService {
       id: `${source}2${destination}`,
       source: source,
       target: destination,
+      data: {
+        class: "edge"
+      }
     }
   }
 

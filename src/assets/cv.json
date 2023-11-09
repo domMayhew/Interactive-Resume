@@ -99,7 +99,7 @@
         },
         {
           "id": "architectureAndDesign",
-          "label": "Develop and communicate software *architecture* and *designs*"
+          "label": "Software architecture and designs"
         },
         {
           "id": "automatedTesting",
@@ -107,7 +107,7 @@
         },
         {
           "id": "analyzeRequirements",
-          "label": "*Analyze* and *design* functional, nonfunctional, and security *requirements*"
+          "label": "Analyze Security Requirements"
         },
         {
           "id": "codeReview",
@@ -130,7 +130,7 @@
       "children": [
         {
           "id": "languages",
-          "label": "Programming and Scripting Languages",
+          "label": "Languages",
           "children": [
             {
               "id": "scala",

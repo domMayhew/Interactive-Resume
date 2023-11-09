@@ -1,11 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
-html,
-body,
-app-root,
-app-root div {
+app-root {
   display: block;
-  height: 200vh;
-  width: 90vw;
+  height: 300vh;
+  width: 100vw;
   background-color: azure;
 }
 
@@ -22,7 +19,7 @@ app-root div {
 }
 
 .cluster-container.hovered>rect.cluster-rect {
-  filter: drop-shadow(0 0 8px rgb(0 0 0 / 0.2))
+  filter: drop-shadow(0 0 8px rgb(0 0 0 / 0.2));
 }
 
 .node-rect {
@@ -40,4 +37,18 @@ app-root div {
 
 .node-text {
   pointer-events: none;
+}
+
+.connected {
+  stroke-width: 2px;
+  stroke-opacity: 1;
+  filter: drop-shadow(0 0 3px rgb(255 255 0 / 0.2));
+}
+
+.connected>rect {
+  stroke-width: 2px;
+}
+
+svg:not(.cluster-text) {
+  font-size: 16px;
 }
