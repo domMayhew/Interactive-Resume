@@ -5,12 +5,13 @@ import { Resume, ResumeTree } from './cvGraph/cvData.model';
 import { assert } from 'typia';
 import { Observable, Subject, config } from 'rxjs';
 import { ConfigService } from './config-service';
+import { VectorDate } from './datePipe';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  providers: [CvDataService]
+  providers: [CvDataService],
 })
 export class AppComponent {
 

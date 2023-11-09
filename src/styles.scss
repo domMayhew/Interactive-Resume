@@ -10,8 +10,16 @@ app-root {
   font-family: "Lora";
   src:
     local("Lora"),
-    url("./assets/fonts/Lora-VariableFont_wght.ttf") format('truetype');
+    url("./assets/fonts/Lora/Lora-VariableFont_wght.ttf") format('truetype');
 }
+
+@font-face {
+  font-family: "Inconsolata";
+  src:
+    local("Inconsolata"),
+    url("./assets/fonts/inconsolata/Inconsolata-VariableFont_wdth,wght.ttf") format('truetype');
+}
+
 
 .cluster-rect {
   filter: drop-shadow(0 0 3px rgb(0 0 0 / 0.2));
@@ -23,34 +31,32 @@ app-root {
 }
 
 .node-rect {
-  filter: drop-shadow(0 0 3px rgb(0 0 0 / 0.2));
   stroke-width: 1px;
   transition: 0.3s;
 }
 
-.node-rect:hover,
-.node-container:hover+.node-rect {
-  filter: drop-shadow(0 0 8px rgb(0 0 0 / 0.2));
-
-  stroke-width: 2px;
-}
-
-.node-text {
-  pointer-events: none;
-}
-
-.connected,
+path.connected,
 .connected>rect {
   stroke-width: 2px;
   stroke-opacity: 1;
-  filter: drop-shadow(0 0 4px rgb(255 255 0 / 0.3));
+  filter: drop-shadow(0 0 3px rgb(255 255 0 / 0.2));
 }
 
 svg {
   font-size: 16px;
-  font-family: Lora;
-}
+  font-family: Inconsolata;
 
-svg.cluster-text {
-  font-size: 24px;
+  path {
+    transition: 0.3s;
+  }
+
+  .cluster-text {
+    font-size: 24px;
+    font-family: Inconsolata;
+  }
+
+  .date,
+  .location {
+    fill-opacity: 0.5;
+  }
 }

@@ -2,15 +2,15 @@ import { Injectable } from '@angular/core';
 import { assertEquals, validateEquals } from 'typia';
 import { Node, Edge, ClusterNode, Graph } from '@swimlane/ngx-graph';
 
-import { Experience, Resume, ResumeTree } from './cvData.model';
-import resumeJson from "../../assets/cv.json";
+import { Resume, ResumeTree } from './cvData.model';
 import * as _ from 'lodash';
+import { ConfigService } from '../config-service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CvDataService {
-  constructor() {
+  constructor(private readonly config: ConfigService) {
   }
 
   buildResume(jsonResume: Object): Resume {
@@ -78,7 +78,8 @@ export class CvDataService {
         id: rTree.id,
         label: rTree.label,
         parentId,
-        data: { rTree, path, connected: rTree.connected || false }
+        data: { rTree, path, connected: rTree.connected || false },
+        dimension: this.config.nodeDimensions
       }
     }
 
@@ -90,8 +91,7 @@ export class CvDataService {
       }
     }
 
-    const variableWidthNodes = _.flatMap(resume.entries, entry => computeSubTree([])(entry));
-    return _.map(variableWidthNodes, n => n.dimension = Object.assign(n, { height: n.dimension?.height || 30, width: 200 })); // TODO
+    return _.flatMap(resume.entries, entry => computeSubTree([])(entry));
   }
 
   /*

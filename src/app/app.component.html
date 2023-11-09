@@ -13,7 +13,7 @@
 		let-node>
 		<svg [class]="node.data.connected ? 'node-container connected' : 'node-container'"
 			(mouseover)="setConnections(node, node.data.path, true)"
-			(mouseleave)="setConnections(node, node.data.path, false)"
+			(mouseleave)="setConnections(node,node.data.path, false)"
 			(dblclick)="expandCollapse(node.data.path)"
 			version="1.1"
 			xmlns="http://www.w3.org/2000/svg">
@@ -21,8 +21,6 @@
 				attr.width={{node.dimension.width}}
 				attr.height={{node.dimension.height}}
 				transform="translate(1,1)"
-				rx="2"
-				ry="2"
 				fill="white"
 				fill-opacity="1"
 				stroke="slategrey"
@@ -34,6 +32,21 @@
 				text-anchor="middle"
 				dominant-baseline="middle">
 				{{node.label}}
+			</text>
+			<text *ngIf="node.data.rTree.end"
+				[attr.x]="node.dimension.width-10"
+				[attr.y]="node.dimension.height/2+1"
+				class="date"
+				text-anchor="end"
+				dominant-baseline="middle">
+				{{node.data.rTree.end | vectorDate}}
+			</text>
+			<text *ngIf="node.data.rTree.location"
+				[attr.y]="node.dimension.height/2+1"
+				[attr.x]="10"
+				class="location"
+				dominant-baseline="middle">
+				{{node.data.rTree.location}}
 			</text>
 		</svg>
 	</ng-template>
@@ -52,8 +65,6 @@
 				attr.width={{cluster.dimension.width-20}}
 				attr.height={{cluster.dimension.height}}
 				transform="translate(10,1)"
-				rx="2"
-				ry="2"
 				stroke="slategrey"
 				stroke-width="1"
 				fill="white"
@@ -72,12 +83,25 @@
 			<text class="cluster-text"
 				attr.x="{{(cluster.dimension.width)/2}}"
 				y="11"
-				font-family="sans-serif"
 				font-size="20"
 				text-anchor="middle"
 				dominant-baseline="hanging">
 				{{cluster.label}}
 			</text>
+			<text *ngIf="cluster.data.rTree.end"
+				[attr.x]="cluster.dimension.width-20"
+				[attr.y]="31"
+				class="date"
+				text-anchor="end">
+				{{cluster.data.rTree.end | vectorDate}}
+			</text>
+			<text *ngIf="cluster.data.rTree.location"
+				[attr.y]="31"
+				[attr.x]="20"
+				class="location">
+				{{cluster.data.rTree.location}}
+			</text>
+
 		</svg>
 	</ng-template>
 	<ng-template #linkTemplate

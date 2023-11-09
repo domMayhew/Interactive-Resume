@@ -11,10 +11,16 @@ export class ConfigService {
 
   public readonly layoutSettings = {
     multigraph: false,
-    nodePadding: 20,
-    edgePadding: 20,
-    orientation: "TB"
+    nodePadding: 0,
+    edgePadding: 60,
+    rankPadding: 150,
+    orientation: "LR"
   };
+
+  public readonly nodeDimensions = {
+    width: 600,
+    height: 30
+  }
 
   public readonly layout = "dagreCluster";
 }

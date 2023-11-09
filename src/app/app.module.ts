@@ -9,6 +9,7 @@ import { NgxGraphModule } from '@swimlane/ngx-graph';
 // import { MarkdownModule } from 'ngx-markdown';
 import { CvDataService } from './cvGraph/cv-data.service';
 import { ConfigService } from './config-service';
+import { VectorDate } from './datePipe';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { ConfigService } from './config-service';
     BrowserAnimationsModule,
     AppRoutingModule,
     NgxGraphModule,
+    VectorDate
   ],
   providers: [CvDataService, ConfigService],
   bootstrap: [AppComponent]

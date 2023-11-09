@@ -77,9 +77,9 @@
       ]
     },
     {
-      "id": "academic",
-      "label": "Academic",
-      "description": "./markdown/academic-description.md"
+      "id": "academics",
+      "label": "Academics",
+      "description": "./markdown/academics-description.md"
     },
     {
       "id": "projects",
