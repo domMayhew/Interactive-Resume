@@ -2,7 +2,7 @@ import { TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
 import { NgxGraphModule } from '@swimlane/ngx-graph';
-import { CvDataService } from './cvGraph/cv-data.service';
+import { ResumeService } from './resume/resume.service';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
@@ -11,7 +11,7 @@ describe('AppComponent', () => {
         RouterTestingModule,
         NgxGraphModule,
       ],
-      providers: [CvDataService],
+      providers: [ResumeService],
       declarations: [
         AppComponent
       ],

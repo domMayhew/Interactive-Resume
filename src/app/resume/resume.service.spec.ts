@@ -1,8 +1,8 @@
 import { TestBed } from '@angular/core/testing';
 
-import { CvDataService } from './cv-data.service';
+import { ResumeService } from './resume.service';
 import { validateEquals } from 'typia';
-import { Resume, ResumeTree } from './cvData.model';
+import { Resume, ResumeTree } from './resume.model';
 import * as _ from 'lodash';
 import { Edge } from '@swimlane/ngx-graph';
 import { ConfigService } from '../config-service';
@@ -52,13 +52,13 @@ const testResume: Resume = {
   ]
 }
 
-describe('CvDataService', () => {
-  let service: CvDataService;
+describe('ResumeService', () => {
+  let service: ResumeService;
   let config = new ConfigService();
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(CvDataService);
+    service = TestBed.inject(ResumeService);
   });
 
   it('should be created', () => {

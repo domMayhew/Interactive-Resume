@@ -1,29 +1,27 @@
 import { Component } from '@angular/core';
-import { Node, ClusterNode, Edge, Graph } from '@swimlane/ngx-graph';
-import { CvDataService } from './cvGraph/cv-data.service';
-import { Resume, ResumeTree } from './cvGraph/cvData.model';
-import { assert } from 'typia';
-import { Observable, Subject, config } from 'rxjs';
+import { Node, Edge, Graph } from '@swimlane/ngx-graph';
+import { ResumeService } from './resume/resume.service';
+import { Resume } from './resume/resume.model';
+import { Observable, Subject } from 'rxjs';
 import { ConfigService } from './config-service';
-import { VectorDate } from './datePipe';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  providers: [CvDataService],
+  providers: [ResumeService]
 })
 export class AppComponent {
 
-  constructor(private readonly cvDataService: CvDataService, private readonly config: ConfigService) { };
+  constructor(private readonly resumeService: ResumeService, private readonly config: ConfigService) { };
 
   readonly title = 'icv';
 
   public readonly layoutSettings = this.config.layoutSettings;
   public readonly layout = this.config.layout;
 
-  private resume: Resume = this.cvDataService.buildResume(this.config.jsonResume);
-  graph: Graph = this.cvDataService.buildGraph(this.resume);
+  private resume: Resume = this.resumeService.buildResume(this.config.jsonResume);
+  graph: Graph = this.resumeService.buildGraph(this.resume);
 
   updateSub$: Subject<boolean> = new Subject();
   updateObs$: Observable<boolean> = this.updateSub$.asObservable();
@@ -35,7 +33,7 @@ export class AppComponent {
     return this.graph.edges.filter(e => e.source == node.id || e.target == node.id);
   }
 
-  setConnections(node: Node, path: string[], isConnected: boolean): void {
+  setConnections(node: Node, isConnected: boolean): void {
     const neighbours = this.graph.edges.flatMap(e => {
       if (e.source === node.id) {
         e.data.connected = isConnected;
@@ -59,8 +57,8 @@ export class AppComponent {
   }
 
   expandCollapse(path: string[]): void {
-    this.resume = this.cvDataService.toggleExpanded(this.resume, path);
-    this.graph = this.cvDataService.buildGraph(this.resume);
+    this.resume = this.resumeService.toggleExpanded(this.resume, path);
+    this.graph = this.resumeService.buildGraph(this.resume);
   }
 
   clusterMouseEnter(event: MouseEvent): void {

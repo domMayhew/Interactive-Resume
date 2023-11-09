@@ -12,8 +12,8 @@
 	<ng-template #nodeTemplate
 		let-node>
 		<svg [class]="node.data.connected ? 'node-container connected' : 'node-container'"
-			(mouseover)="setConnections(node, node.data.path, true)"
-			(mouseleave)="setConnections(node,node.data.path, false)"
+			(mouseover)="setConnections(node, true)"
+			(mouseleave)="setConnections(node, false)"
 			(dblclick)="expandCollapse(node.data.path)"
 			version="1.1"
 			xmlns="http://www.w3.org/2000/svg">
@@ -101,7 +101,6 @@
 				class="location">
 				{{cluster.data.rTree.location}}
 			</text>
-
 		</svg>
 	</ng-template>
 	<ng-template #linkTemplate

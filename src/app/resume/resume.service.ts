@@ -2,14 +2,14 @@ import { Injectable } from '@angular/core';
 import { assertEquals, validateEquals } from 'typia';
 import { Node, Edge, ClusterNode, Graph } from '@swimlane/ngx-graph';
 
-import { Resume, ResumeTree } from './cvData.model';
+import { Resume, ResumeTree } from './resume.model';
 import * as _ from 'lodash';
 import { ConfigService } from '../config-service';
 
 @Injectable({
   providedIn: 'root',
 })
-export class CvDataService {
+export class ResumeService {
   constructor(private readonly config: ConfigService) {
   }
 
