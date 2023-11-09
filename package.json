@@ -23,9 +23,10 @@
     "@angular/router": "^16.2.0",
     "@dagrejs/dagre": "^1.0.4",
     "@dagrejs/graphlib": "^2.1.13",
-    "@swimlane/ngx-graph": "^8.2.2",
+    "@swimlane/ngx-graph": "8.2.2",
     "ngx-markdown": "^16.0.0",
     "rxjs": "~7.8.0",
+    "ts-evaluator": "^1.2.0",
     "tslib": "^2.3.0",
     "typia": "^5.2.6",
     "zone.js": "~0.13.0"

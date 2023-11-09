@@ -18,7 +18,6 @@
 				(mouseover)="setConnections(node, true)"
 				(mouseleave)="setConnections(node, false)"
 				(dblclick)="expandCollapse(node.data.path)"
-				(click)="showDetails(node.data.rTree)"
 				version="1.1"
 				xmlns="http://www.w3.org/2000/svg">
 				<rect class="node-rect"
@@ -38,7 +37,7 @@
 					{{node.label}}
 				</text>
 				<text *ngIf="node.data.rTree.end"
-					[attr.x]="node.dimension.width-10"
+					[attr.x]="node.dimension.width-40"
 					[attr.y]="node.dimension.height/2+1"
 					class="date"
 					text-anchor="end"
@@ -52,6 +51,28 @@
 					dominant-baseline="middle">
 					{{node.data.rTree.location}}
 				</text>
+
+			</svg>
+			<svg [attr.x]="node.dimension.width-39"
+				[attr.y]="1"
+				width="40"
+				height="30"
+				class="new-window-symbol"
+				xmlns="http://www.w3.org/2000/svg"
+				viewBox="0 0 24 24">
+				<rect (click)="showDetails(node.data.rTree)"
+					width="24"
+					height="24"
+					fill-opacity="0"></rect>
+			</svg>
+			<svg [attr.x]="node.dimension.width-27"
+				[attr.y]="3"
+				xmlns="http://www.w3.org/2000/svg"
+				height="24"
+				viewBox="0 -960 960 960"
+				width="24"
+				opacity="0.75">
+				<path d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h280v80H200v560h560v-280h80v280q0 33-23.5 56.5T760-120H200Zm188-212-56-56 372-372H560v-80h280v280h-80v-144L388-332Z"></path>
 			</svg>
 		</ng-template>
 		<ng-template #clusterTemplate

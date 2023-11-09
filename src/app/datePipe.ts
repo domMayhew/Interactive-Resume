@@ -6,13 +6,16 @@ import typia from "typia";
   name: 'vectorDate'
 })
 export class VectorDate implements PipeTransform {
+  months: string[] = [
+    'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
+  ];
+
   transform(value: [number, number] | undefined): string {
     if (value === undefined) {
       return 'Present'
     } else {
       const [year, month] = typia.assertEquals<[number, number]>(value);
-      const paddedMonth = month < 10 ? '0' + month : month;
-      return year + '/' + paddedMonth;
+      return this.months[month - 1] + " " + year;
     }
   }
 }
