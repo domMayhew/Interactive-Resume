@@ -3,6 +3,7 @@
     {
       "id": "experiences",
       "label": "Experiences",
+      "expanded": true,
       "children": [
         {
           "id": "visier",
@@ -124,7 +125,8 @@
     },
     {
       "id": "technologies",
-      "label": "technologies",
+      "label": "Technologies",
+      "expanded": false,
       "children": [
         {
           "id": "languages",
@@ -141,6 +143,10 @@
             {
               "id": "typescript",
               "label": "TypeScript"
+            },
+            {
+              "id": "javascript",
+              "label": "JavaScript"
             },
             {
               "id": "cpp",

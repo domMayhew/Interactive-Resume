@@ -2,14 +2,16 @@ import { TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
 import { NgxGraphModule } from '@swimlane/ngx-graph';
+import { CvDataService } from './cvGraph/cv-data.service';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [
         RouterTestingModule,
-        NgxGraphModule
+        NgxGraphModule,
       ],
+      providers: [CvDataService],
       declarations: [
         AppComponent
       ],
