@@ -4,8 +4,9 @@ body,
 app-root,
 app-root div {
   display: block;
-  height: 4000px;
-  width: 4000px;
+  height: 200vh;
+  width: 90vw;
+  background-color: azure;
 }
 
 @font-face {
@@ -13,4 +14,30 @@ app-root div {
   src:
     local("Lora"),
     url("./assets/fonts/Lora-VariableFont_wght.ttf") format('truetype');
+}
+
+.cluster-rect {
+  filter: drop-shadow(0 0 3px rgb(0 0 0 / 0.2));
+  transition: 0.3s;
+}
+
+.cluster-container.hovered>rect.cluster-rect {
+  filter: drop-shadow(0 0 8px rgb(0 0 0 / 0.2))
+}
+
+.node-rect {
+  filter: drop-shadow(0 0 3px rgb(0 0 0 / 0.2));
+  stroke-width: 1px;
+  transition: 0.3s;
+}
+
+.node-rect:hover,
+.node-container:hover+.node-rect {
+  filter: drop-shadow(0 0 8px rgb(0 0 0 / 0.2));
+
+  stroke-width: 2px;
+}
+
+.node-text {
+  pointer-events: none;
 }

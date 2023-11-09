@@ -153,4 +153,12 @@ export class CvDataService {
       target: destination,
     }
   }
+
+  resumeIterate(resume: Resume, fn: (rt: ResumeTree) => void): void {
+    const go = (rt: ResumeTree) => {
+      fn(rt);
+      (rt.children || []).forEach(go);
+    }
+    resume.entries.forEach(go);
+  }
 }

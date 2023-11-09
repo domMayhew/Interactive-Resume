@@ -6,14 +6,6 @@ import { Resume, ResumeTree } from './cvData.model';
 import * as _ from 'lodash';
 import { Edge } from '@swimlane/ngx-graph';
 
-const resumeIterate = (resume: Resume, fn: (rt: ResumeTree) => void): void => {
-  const go = (rt: ResumeTree) => {
-    fn(rt);
-    (rt.children || []).forEach(go);
-  }
-  resume.entries.forEach(go);
-}
-
 describe('CvDataService', () => {
   let service: CvDataService;
 
@@ -32,7 +24,7 @@ describe('CvDataService', () => {
 
   it('all entries should have unique IDs', () => {
     const ids = new Set<string>();
-    resumeIterate(service.getInitResume(), (rTree: ResumeTree) => {
+    service.resumeIterate(service.getInitResume(), (rTree: ResumeTree) => {
       expect(ids).not.toContain(rTree.id);
       ids.add(rTree.id);
     });
