@@ -19,6 +19,8 @@ export class AppComponent {
 
   public readonly layoutSettings = this.config.layoutSettings;
   public readonly layout = this.config.layout;
+  public readonly nodeConfig = this.config.nodeConfig;
+  public readonly clusterConfig = this.config.clusterConfig;
 
   private resume: Resume = this.resumeService.buildResume(this.config.jsonResume);
   graph: Graph = this.resumeService.buildGraph(this.resume);
@@ -33,6 +35,8 @@ export class AppComponent {
     return this.graph.edges.filter(e => e.source == node.id || e.target == node.id);
   }
 
+
+  /** NODE EVENTS **/
   setConnections(node: Node, isConnected: boolean): void {
     const neighbours = this.graph.edges.flatMap(e => {
       if (e.source === node.id) {
@@ -56,15 +60,28 @@ export class AppComponent {
     });
   }
 
-  showDetails(rTree: ResumeTree): void {
+  expandNode(node: Node): void {
+    this.expandCollapse(node);
+  }
+
+  showNodeDetails(rTree: ResumeTree): void {
     this.selectedRTree = rTree;
     this.detailsOpen = true;
+    console.log("OPENED");
   }
   closeDetails(): void { this.detailsOpen = false };
 
-  expandCollapse(path: string[]): void {
-    this.resume = this.resumeService.toggleExpanded(this.resume, path);
-    this.graph = this.resumeService.buildGraph(this.resume);
+  nodeWidth(node: Node): number {
+    return node.dimension?.width || this.nodeConfig.dimensions.width;
+  }
+
+  nodeHeight(node: Node): number {
+    return node.dimension?.height || this.nodeConfig.dimensions.height;
+  }
+
+  /** CLUSTER EVENTS **/
+  collapseCluster(node: Node): void {
+    this.expandCollapse(node);
   }
 
   clusterMouseEnter(event: MouseEvent): void {
@@ -85,5 +102,11 @@ export class AppComponent {
       el.classList.remove("hovered");
     } else {
     }
+  }
+
+  /** COMMON EVENTS **/
+  expandCollapse(node: Node): void {
+    this.resume = this.resumeService.toggleExpanded(this.resume, node.data?.path);
+    this.graph = this.resumeService.buildGraph(this.resume);
   }
 }
