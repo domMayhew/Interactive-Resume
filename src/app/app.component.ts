@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { Node, Edge, Graph } from '@swimlane/ngx-graph';
 import { ResumeService } from './resume/resume.service';
-import { Resume, ResumeTree } from './resume/resume.model';
+import { Experience, Resume, ResumeTree } from './resume/resume.model';
 import { Observable, Subject } from 'rxjs';
 import { ConfigService } from './config-service';
+import typia from 'typia';
 
 @Component({
   selector: 'app-root',
@@ -32,7 +33,8 @@ export class AppComponent {
     return this.graph.edges.filter(e => e.source == node.id || e.target == node.id);
   }
 
-  /** NODE EVENTS **/
+  /** NODES **/
+  // Events
   setConnections(node: Node, isConnected: boolean): void {
     const neighbours = this.graph.edges.flatMap(e => {
       if (e.source === node.id) {
@@ -57,7 +59,9 @@ export class AppComponent {
   }
 
   expandNode(node: Node): void {
-    this.expandCollapse(node);
+    if (this.isExpandable(node)) {
+      this.expandCollapse(node);
+    }
   }
 
   showNodeDetails(rTree: ResumeTree): void {
@@ -67,12 +71,21 @@ export class AppComponent {
   }
   closeDetails(): void { this.detailsOpen = false };
 
+  // Helpers
   nodeWidth(node: Node): number {
     return node.dimension?.width || this.nodeConfig.dimensions.width;
   }
 
   nodeHeight(node: Node): number {
     return node.dimension?.height || this.nodeConfig.dimensions.height;
+  }
+
+  isExpandable(node: Node): boolean {
+    return (node.data?.rTree?.children?.length || 0) > 0;
+  }
+
+  hasDetails(node: Node): boolean {
+    return typia.is<Experience>(node.data?.rTree || {});
   }
 
   /** CLUSTER EVENTS **/

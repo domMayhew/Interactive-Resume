@@ -62,8 +62,10 @@
 					</g>
 				</g>
 			</svg>
+			<!-- Details -->
 			<!-- Open details icon -->
-			<svg [attr.x]="nodeWidth(node)-nodeConfig.openDetails.padding.x"
+			<svg *ngIf="hasDetails(node)"
+				[attr.x]="nodeWidth(node)-nodeConfig.openDetails.padding.x"
 				[attr.y]="nodeConfig.openDetails.offset.y"
 				[attr.width]="nodeConfig.openDetails.dimension.width"
 				[attr.height]="nodeConfig.openDetails.dimension.height"
@@ -73,7 +75,8 @@
 				<use href="../assets/icons.svg#open-new-window"></use>
 			</svg>
 			<!-- Open details click-box -->
-			<svg [attr.x]="nodeWidth(node)-30"
+			<svg *ngIf="hasDetails(node)"
+				[attr.x]="nodeWidth(node)-30"
 				[attr.y]="1"
 				width="30"
 				height="30"
@@ -91,7 +94,7 @@
 		<ng-template #clusterTemplate
 			let-cluster>
 			<svg [class]="cluster.data.connected ? 'cluster-container connected' : 'cluster-container'"
-				(dblclick)="collapseCluster(cluster.data.path)"
+				(dblclick)="collapseCluster(cluster)"
 				(mouseleave)="clusterMouseLeave($event)"
 				(mouseenter)="clusterMouseEnter($event)"
 				xmlns="http://www.w3.org/2000/svg">
