@@ -1,67 +1,16 @@
-@import '@angular/material/prebuilt-themes/indigo-pink.css';
+@use 'assets/fonts/fonts.scss';
 
-div.app-container {
-  display: block;
-  height: 300vh;
-  width: 300vw;
-  background-color: #626b6b3b;
-}
+@use '@angular/material' as mat;
+@use './theme.scss' as theme;
+// Include common, non-theme-dependent styles for material components
+@include mat.core();
+// Include common, theme-dependent styles for material components
+@include mat.core-theme(theme.$theme);
 
-@font-face {
-  font-family: "Lora";
-  src:
-    local("Lora"),
-    url("./assets/fonts/Lora/Lora-VariableFont_wght.ttf") format('truetype');
-}
-
-@font-face {
-  font-family: "Inconsolata";
-  src:
-    local("Inconsolata"),
-    url("./assets/fonts/inconsolata/Inconsolata-VariableFont_wdth,wght.ttf") format('truetype');
-}
-
-
-.cluster-rect {
-  filter: drop-shadow(0 0 3px rgb(0 0 0 / 0.2));
-  transition: 0.3s;
-}
-
-.cluster-container.hovered>rect.cluster-rect {
-  filter: drop-shadow(0 0 8px rgb(0 0 0 / 0.2));
-}
-
-.node-rect {
-  stroke-width: 1px;
-  transition: 0.3s;
-}
-
-path.connected,
-.connected>rect {
-  stroke-width: 2px;
-  stroke-opacity: 1;
-  filter: drop-shadow(0 0 3px rgb(255 255 0 / 0.2));
-}
-
-svg {
-  font-size: 16px;
-  font-family: Inconsolata;
-
-  path {
-    transition: 0.3s;
-  }
-
-  .cluster-text {
-    font-size: 24px;
-    font-family: Inconsolata;
-  }
-
-  .date,
-  .location {
-    fill-opacity: 0.5;
-  }
-
-  .new-window-symbol {
-    pointer-events: all;
-  }
+html,
+body {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  margin: 0;
 }

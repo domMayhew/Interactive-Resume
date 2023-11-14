@@ -28,13 +28,9 @@ export class AppComponent {
   selectedRTree: ResumeTree = this.resume.entries[0];
   detailsOpen: boolean = false;
 
-  // panToNodeSub$: Subject<Node> = new Subject();
-  // panToNodeObs$: Observable<Node> = this.panToNodeSub$.asObservable();
-
   connectedEdges(node: Node): Edge[] {
     return this.graph.edges.filter(e => e.source == node.id || e.target == node.id);
   }
-
 
   /** NODE EVENTS **/
   setConnections(node: Node, isConnected: boolean): void {

@@ -18,6 +18,10 @@ export class ConfigService {
   };
 
   public readonly nodeConfig = {
+    translate: {
+      x: 1,
+      y: 1
+    },
     dimensions: {
       width: 600,
       height: 30
@@ -54,7 +58,6 @@ export class ConfigService {
       x: 0,
       y: 11
     },
-    fontSize: 20,
     durationPadding: {
       x: 20,
       y: 30

@@ -1,0 +1,57 @@
+@use '@angular/material' as mat;
+@use '../theme.scss' as theme;
+
+div.app-container {
+  display: block;
+  height: 300vh;
+  width: 300vw;
+  background-color: #626b6b3b;
+}
+
+// Prevent text SVG elements from stealing 'hover' from its parent
+text {
+  pointer-events: none;
+}
+
+.cluster-rect {
+  filter: drop-shadow(0 0 3px rgb(0 0 0 / 0.2));
+  transition: 0.3s;
+}
+
+.cluster-container.hovered>rect.cluster-rect {
+  filter: drop-shadow(0 0 8px rgb(0 0 0 / 0.2));
+}
+
+.node-rect {
+  stroke-width: 1px;
+  transition: 0.3s;
+}
+
+path.connected,
+.node-rect:hover {
+  stroke-width: 2px;
+  stroke-opacity: 1;
+  filter: drop-shadow(0 0 3px rgb(255 255 0 / 0.4));
+}
+
+
+.cluster-header-text {
+  @include theme.get-typography(theme.$theme, headline-5);
+}
+
+svg {
+  @include theme.get-font-family(theme.$theme, body-1);
+
+  path {
+    transition: 0.3s;
+  }
+
+  .node-date,
+  .node-location {
+    fill-opacity: 0.5;
+  }
+
+  .new-window-symbol {
+    pointer-events: all;
+  }
+}

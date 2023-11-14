@@ -17,7 +17,7 @@ import { ExperienceSubtitleComponent } from './details/subtitle/experience-subti
 import { MarkdownModule } from 'ngx-markdown';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { MatIconModule } from '@angular/material/icon';
-
+import { DurationPipe } from './durationPipe';
 
 @NgModule({
   declarations: [
@@ -31,6 +31,7 @@ import { MatIconModule } from '@angular/material/icon';
     AppRoutingModule,
     NgxGraphModule,
     VectorDate,
+    DurationPipe,
     MatCardModule,
     MatButtonModule,
     HttpClientModule,
@@ -38,7 +39,7 @@ import { MatIconModule } from '@angular/material/icon';
     MatIconModule
   ],
   providers: [ResumeService, ConfigService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {
 }

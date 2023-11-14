@@ -1,7 +1,6 @@
 @use '@angular/material' as mat;
-
-$card-typography: mat.define-typography-config($font-family: Inconsolata);
-@include mat.card-typography($card-typography);
+@use '../../theme.scss' as theme;
+@include mat.card-theme(theme.$theme);
 
 .card-container {
   position: fixed;

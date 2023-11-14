@@ -79,7 +79,7 @@ export class ResumeService {
         label: rTree.label,
         parentId,
         data: { rTree, path, connected: rTree.connected || false },
-        dimension: this.config.nodeDimensions
+        dimension: this.config.nodeConfig.dimensions
       }
     }
 

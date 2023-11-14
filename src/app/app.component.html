@@ -22,7 +22,7 @@
 				version="1.1"
 				xmlns="http://www.w3.org/2000/svg">
 				<!-- Translate to provide space for drop shadow -->
-				<g transform="translate(1,1)">
+				<g attr.transform="translate({{nodeConfig.translate.x}}, {{nodeConfig.translate.y}})">
 					<!-- Outline -->
 					<rect [attr.width]="nodeWidth(node)"
 						[attr.height]="nodeHeight(node)"
@@ -114,8 +114,7 @@
 					<!-- Header text -->
 					<text [attr.y]="clusterConfig.textOffset.y"
 						[attr.x]="(cluster.dimension.width)/2"
-						[attr.font-size]="clusterConfig.fontSize"
-						class="cluster-text"
+						class="cluster-header-text"
 						text-anchor="middle"
 						dominant-baseline="hanging">
 						{{cluster.label}}
