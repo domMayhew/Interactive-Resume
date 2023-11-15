@@ -11,7 +11,10 @@ export class DetailsComponent {
   @Input({ required: true }) rTree!: ResumeTree;
   @Output() close = new EventEmitter<void>();
 
-  isExperience = () => typia.is<Experience>(this.rTree);
+  isExperience = () => {
+    console.log(this.rTree, typia.is<Experience>(this.rTree));
+    return typia.is<Experience>(this.rTree);
+  }
   rTreeAsExperience = (): Experience | undefined => this.isExperience() ? typia.assertEquals<Experience>(this.rTree) : undefined;
   title = () => this.rTreeAsExperience()?.title || this.rTree.label;
   altTitle = () => this.rTreeAsExperience()?.label || '';

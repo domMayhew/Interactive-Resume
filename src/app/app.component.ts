@@ -64,10 +64,9 @@ export class AppComponent {
     }
   }
 
-  showNodeDetails(rTree: ResumeTree): void {
-    this.selectedRTree = rTree;
+  showNodeDetails(node: Node): void {
+    this.selectedRTree = node.data?.rTree || {};
     this.detailsOpen = true;
-    console.log("OPENED");
   }
   closeDetails(): void { this.detailsOpen = false };
 

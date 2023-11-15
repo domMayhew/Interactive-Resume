@@ -17,7 +17,7 @@ export class DurationPipe implements PipeTransform {
       const [endYear, endMonth] = typia.assertEquals<[number, number]>(end);
       const months = (endYear - startYear) * 12 + endMonth - startMonth;
       const yearStr = months > 12 ? Math.floor(months / 12) + ' yrs, ' : '';
-      const monthStr = months % 12 + 'mos.';
+      const monthStr = months % 12 + ' mos.';
       return yearStr + monthStr;
     }
   }
