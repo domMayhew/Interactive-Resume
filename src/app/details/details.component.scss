@@ -45,7 +45,7 @@ div.card-container {
     height: 3rem;
     top: -1.5rem;
     right: -1.5rem;
-    background-color: rgba(255, 145, 145, 0.199);
+    background-color: rgba(theme.get-color(warn, darker), 1);
     border-radius: 100%;
   }
 }

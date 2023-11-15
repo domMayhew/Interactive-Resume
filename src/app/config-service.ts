@@ -12,8 +12,8 @@ export class ConfigService {
   public readonly layoutSettings = {
     multigraph: false,
     nodePadding: 0,
-    edgePadding: 60,
-    rankPadding: 150,
+    edgePadding: 45,
+    rankPadding: 100,
     orientation: "LR"
   };
 
@@ -50,21 +50,44 @@ export class ConfigService {
       x: 20,
       y: 20
     },
+    offset: {
+      x: 0,
+      y: 20
+    },
     rounding: {
       x: 2,
       y: 2
     },
     textOffset: {
       x: 0,
-      y: 11
+      y: 14
     },
     durationPadding: {
-      x: 20,
+      x: 50,
       y: 30
     },
     locationPadding: {
       x: 20,
       y: 30
+    },
+    openDetails: {
+      dimension: {
+        width: 26,
+        height: 26
+      },
+      padding: {
+        x: 45,
+        y: 0
+      },
+      offset: {
+        x: 0,
+        y: 10.5 + 20
+      },
+      opacity: 1,
+      clickboxOffset: {
+        x: 45,
+        y: 10.5 + 20
+      }
     }
   }
 

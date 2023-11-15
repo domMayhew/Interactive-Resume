@@ -1,4 +1,5 @@
 @use '@angular/material' as mat;
+@use 'sass:map';
 
 // Palettes
 $palette-primary: mat.define-palette(mat.$indigo-palette);
@@ -15,7 +16,7 @@ $theme: mat.define-light-theme((color: (primary: $palette-primary,
       typography: $typography,
     ));
 
-@mixin get-typography($theme, $level) {
+@mixin get-typography($level) {
   $typography-config: mat.get-typography-config($theme);
 
   font: {
@@ -25,7 +26,15 @@ $theme: mat.define-light-theme((color: (primary: $palette-primary,
   }
 }
 
-@mixin get-font-family($theme, $level) {
+@mixin get-font-family($level) {
   $typography-config: mat.get-typography-config($theme);
   font-family: mat.font-family($typography-config, $level);
+}
+
+@function get-color($palette, $hue) {
+  $color-config: mat.get-color-config($theme);
+  $palette: map.get($color-config, $palette);
+  $color: mat.get-color-from-palette($palette, $hue);
+  @return $color;
+
 }

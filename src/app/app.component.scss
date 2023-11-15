@@ -1,11 +1,12 @@
 @use '@angular/material' as mat;
+@use 'sass:map';
 @use '../theme.scss' as theme;
 
 div.app-container {
   display: block;
   height: 300vh;
   width: 300vw;
-  background-color: #626b6b3b;
+  background-color: theme.get-color(accent, 100);
 }
 
 // Prevent text SVG elements from stealing 'hover' from its parent
@@ -14,17 +15,19 @@ text {
 }
 
 .cluster-rect {
-  filter: drop-shadow(0 0 3px rgb(0 0 0 / 0.2));
+  filter: drop-shadow(0 0 3px rgba(0 0 0 / 0.2));
   transition: 0.3s;
+  fill: theme.get-color(accent, 50);
 }
 
-.cluster-container.hovered>rect.cluster-rect {
+.cluster-rect {
   filter: drop-shadow(0 0 8px rgb(0 0 0 / 0.2));
 }
 
 .node-rect {
   stroke-width: 1px;
   transition: 0.3s;
+  fill: theme.get-color(primary, 100);
 }
 
 path.connected,
@@ -34,13 +37,16 @@ path.connected,
   filter: drop-shadow(0 0 3px rgb(255 255 0 / 0.4));
 }
 
+.cluster-header {
+  fill: theme.get-color(primary, 400);
+}
 
 .cluster-header-text {
-  @include theme.get-typography(theme.$theme, headline-5);
+  @include theme.get-typography(headline-5);
 }
 
 svg {
-  @include theme.get-font-family(theme.$theme, body-1);
+  @include theme.get-font-family(body-1);
 
   path {
     transition: 0.3s;
@@ -49,9 +55,5 @@ svg {
   .node-date,
   .node-location {
     fill-opacity: 0.5;
-  }
-
-  .new-window-symbol {
-    pointer-events: all;
   }
 }
