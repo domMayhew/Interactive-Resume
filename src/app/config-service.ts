@@ -26,6 +26,10 @@ export class ConfigService {
       width: 600,
       height: 30
     },
+    rounding: {
+      x: 2,
+      y: 2
+    },
     durationPadding: 40,
     openDetails: {
       padding: {
@@ -55,8 +59,8 @@ export class ConfigService {
       y: 20
     },
     rounding: {
-      x: 2,
-      y: 2
+      x: 4,
+      y: 4
     },
     textOffset: {
       x: 0,

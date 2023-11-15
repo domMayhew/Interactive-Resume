@@ -10,19 +10,11 @@ div.app-container {
 }
 
 // Prevent text SVG elements from stealing 'hover' from its parent
-text {
+svg text {
   pointer-events: none;
 }
 
-.cluster-rect {
-  filter: drop-shadow(0 0 3px rgba(0 0 0 / 0.2));
-  transition: 0.3s;
-  fill: theme.get-color(accent, 50);
-}
-
-.cluster-rect {
-  filter: drop-shadow(0 0 8px rgb(0 0 0 / 0.2));
-}
+/* NODES */
 
 .node-rect {
   stroke-width: 1px;
@@ -37,12 +29,34 @@ path.connected,
   filter: drop-shadow(0 0 3px rgb(255 255 0 / 0.4));
 }
 
+/* CLUSTERS */
+
+.cluster-rect {
+  filter: drop-shadow(0 0 3px rgba(0 0 0 / 0.2));
+  transition: 0.3s;
+  fill: theme.get-color(accent, 50);
+}
+
+svg.hovered rect.cluster-rect {
+  filter: drop-shadow(0 0 8px rgb(0 0 0 / 0.4));
+}
+
+
 .cluster-header {
-  fill: theme.get-color(primary, 400);
+  fill: theme.get-color(primary, 900);
+
+  ~text {
+    fill: white;
+  }
+}
+
+.cluster-new-window-symbol {
+  fill: white;
 }
 
 .cluster-header-text {
   @include theme.get-typography(headline-5);
+  // fill: theme.get-color(primary, '900-contrast');
 }
 
 svg {

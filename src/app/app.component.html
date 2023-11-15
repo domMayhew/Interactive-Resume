@@ -26,6 +26,8 @@
 					<!-- Outline -->
 					<rect [attr.width]="nodeWidth(node)"
 						[attr.height]="nodeHeight(node)"
+						[attr.rx]="nodeConfig.rounding.x"
+						[attr.ry]="nodeConfig.rounding.y"
 						class="node-rect"
 						stroke="slategrey"
 						stroke-width="1"></rect>
@@ -107,14 +109,28 @@
 					<!-- Outline -->
 					<rect [attr.width]="cluster.dimension.width-clusterConfig.padding.x"
 						[attr.height]="cluster.dimension.height-clusterConfig.padding.y"
+						[attr.rx]="clusterConfig.rounding.x"
+						[attr.ry]="clusterConfig.rounding.y"
 						class="cluster-rect"
 						stroke="slategrey"
 						stroke-width="1">
 					</rect>
+					<!-- Header clip-path -->
+					<clipPath [attr.id]="'header-clip-'+cluster.id">
+						<rect [attr.width]="cluster.dimension.width-clusterConfig.padding.x"
+							[attr.height]="clusterConfig.headerHeight+clusterConfig.rounding.y"
+							[attr.rx]="clusterConfig.rounding.x"
+							[attr.ry]="clusterConfig.rounding.y"></rect>
+					</clipPath>
 					<!-- Header background -->
-					<rect [attr.width]="cluster.dimension.width-clusterConfig.padding.x"
-						[attr.height]="clusterConfig.headerHeight"
-						class="cluster-header"></rect>
+					<defs>
+						<rect [attr.width]="cluster.dimension.width-clusterConfig.padding.x"
+							[attr.height]="clusterConfig.headerHeight"
+							[attr.id]="'header-background-'+cluster.id"></rect>
+					</defs>
+					<use [attr.clip-path]="'url(#header-clip-'+cluster.id+')'"
+						[attr.href]="'#header-background-'+cluster.id"
+						class="cluster-header"></use>
 					<!-- Header text -->
 					<text [attr.y]="clusterConfig.textOffset.y"
 						[attr.x]="(cluster.dimension.width)/2"
@@ -148,7 +164,7 @@
 				[attr.height]="clusterConfig.openDetails.dimension.height"
 				[attr.opacity]="clusterConfig.openDetails.opacity"
 				xmlns="http://www.w3.org/2000/svg"
-				class="new-window-symbol"
+				class="new-window-symbol cluster-new-window-symbol"
 				viewBox="0 -960 960 960">
 				<use href="../../assets/icons.svg#open-new-window"></use>
 			</svg>

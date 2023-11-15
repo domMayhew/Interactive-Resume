@@ -1,9 +1,76 @@
 @use '@angular/material' as mat;
+@use '@angular/material/theming';
 @use 'sass:map';
 
 // Palettes
-$palette-primary: mat.define-palette(mat.$indigo-palette);
-$palette-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+// $palette-primary: mat.define-palette(mat.$blue-palette);
+$palette-primary: (
+  50 : #e8eaf6,
+  100 : #c5cbe9,
+  200 : #9fa8da,
+  300 : #7985cb,
+  400 : #5c6bc0,
+  500 : #3f51b5,
+  600 : #394aae,
+  700 : #3140a5,
+  800 : #29379d,
+  900 : #1b278d,
+  A100 : #c6cbff,
+  A200 : #939dff,
+  A400 : #606eff,
+  A700 : #4757ff,
+  contrast: (50 : #000000,
+    100 : #000000,
+    200 : #000000,
+    300 : #000000,
+    400 : #ffffff,
+    500 : #ffffff,
+    600 : #ffffff,
+    700 : #ffffff,
+    800 : #ffffff,
+    900 : #ffffff,
+    A100 : #000000,
+    A200 : #000000,
+    A400 : #ffffff,
+    A700 : #ffffff,
+  )
+);
+
+
+// $palette-accent: mat.define-palette(mat.$yellow-palette);
+/* For use in src/lib/core/theming/_palette.scss */
+$palette-accent: (
+  50 : #fefbf3,
+  100 : #fdf5e0,
+  200 : #fbeecc,
+  300 : #f9e7b7,
+  400 : #f8e1a7,
+  500 : #f7dc98,
+  600 : #f6d890,
+  700 : #f5d385,
+  800 : #f3ce7b,
+  900 : #f1c56a,
+  A100 : #ffffff,
+  A200 : #ffffff,
+  A400 : #fffffe,
+  A700 : #fff6e5,
+  contrast: (50 : #000000,
+    100 : #000000,
+    200 : #000000,
+    300 : #000000,
+    400 : #000000,
+    500 : #000000,
+    600 : #000000,
+    700 : #000000,
+    800 : #000000,
+    900 : #000000,
+    A100 : #000000,
+    A200 : #000000,
+    A400 : #000000,
+    A700 : #000000,
+  )
+);
+
 $palette-warn: mat.define-palette(mat.$red-palette);
 
 // Typography
@@ -37,10 +104,11 @@ $theme-sans-serif: mat.define-light-theme((color: (primary: $palette-primary,
   font-family: mat.font-family($typography-config, $level);
 }
 
-@function get-color($palette, $hue) {
+@function get-color($paletteName, $hue) {
   $color-config: mat.get-color-config($theme);
-  $palette: map.get($color-config, $palette);
+  $palette: map.get($color-config, $paletteName);
   $color: mat.get-color-from-palette($palette, $hue);
+  // $color: mat-color($palette, $hue);
   @return $color;
 
 }

@@ -96,6 +96,7 @@ export class AppComponent {
     const el: Element = event.target as Element;
     if (!el.classList.contains("hovered")) {
       el.classList.add("hovered");
+      console.log(el);
     }
   }
 
@@ -108,7 +109,6 @@ export class AppComponent {
 
     if (isValidMouseLeave) {
       el.classList.remove("hovered");
-    } else {
     }
   }
 
