@@ -1,6 +1,6 @@
 @use '@angular/material' as mat;
 @use '../../theme.scss' as theme;
-@include mat.card-theme(theme.$theme);
+@include mat.card-theme(theme.$theme-sans-serif);
 
 div.card-container {
   position: fixed;
@@ -15,14 +15,19 @@ div.card-container {
   align-items: start;
 
   mat-card {
-    flex-basis: 50vw;
+    flex-basis: 75vw;
     min-width: 30rem;
-    max-width: 50rem;
+    max-width: 65rem;
 
     .card-title-container {
       display: flex;
       flex: row nowrap;
       justify-content: space-between;
+    }
+
+    .title {
+      @include theme.get-typography(headline-4);
+      padding-bottom: 0.5rem;
     }
 
     .alt-title {
@@ -33,10 +38,16 @@ div.card-container {
     }
   }
 
+  mat-card-subtitle {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    width: 100%;
+    padding-bottom: 1rem;
+  }
+
   mat-card-content {
-    border-top: 1px solid rgba(0, 0, 0, 0.1);
-    padding-top: 1.5rem;
-    margin-top: 1rem;
+    padding-top: 0.5rem;
+    max-height: 60vh;
+    overflow: auto;
   }
 
   .card-button-close {
@@ -51,5 +62,7 @@ div.card-container {
 }
 
 markdown {
-  font-family: Inconsolata;
+  @include theme.get-typography(body-1, theme.$theme-sans-serif);
+  text-align: justify;
+  line-height: 1.5;
 }

@@ -1,7 +1,19 @@
-During my eight month co-op position at Visier Inc., I directly added value to their SaSS application when I improved UX through a new set of **public-facing RESTful API** endoints for enterprise customers, **reduced customer onboarding time** with a simple example and test enablement application, and **increased customer comprehension** via a custom user-interface for API documentation that leveraged SwaggerUI. These and other projects required me to:
+&nbsp;&nbsp;&nbsp;&nbsp;
+At Visier I quickly became a valuable member of my team, at times even taking a leadership role with less experienced coops. I completed four significant client-facing projects that added value to Visier's SaSS application in the following ways:
+- *Project:* Publish a simple example and test enablement application
+  - *Value:* **Reduce customer onboarding time**
+- *Project:* Create a custom user-interface for API documentation
+  - *Value:* **Increase customer comprehension**
+- *Project:* Develop a new set of public-facing RESTful API endoints for enterprise customers
+  - *Value:* **Increase customization for multi-tenant customers**
+- *Project:* Cause batch jobs to fail when child jobs fail
+  - *Value:* **Enhance visibility of errors in complex customer workflows**
+
+Through these projects I developed and demonstrated the following skills:
 - **Analyze** and **design** function, nonfunctional, and security requirements
 - Develop and communicate software **architecutre** and **designs**
-- Demonstrate **leadership**: mentored, guided, and collaborated with less experienced coops and other junior employees
+- Demonstrate **leadership**
+  - Mentor, guide, and collaborate with less experienced coops and other junior employees
 - Write **scalable**, **testable**, and **reliable** code
   - Write **test plans** and have them pass review
   - Write **unit, integration,** and **end-to-end tests**

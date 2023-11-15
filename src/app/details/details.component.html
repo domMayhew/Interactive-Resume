@@ -11,7 +11,7 @@
 
 			<mat-card-title>
 				<div class="card-title-container">
-					<div>{{title()}}</div>
+					<div class="title">{{title()}}</div>
 					<div *ngIf='altTitle()'
 						class="alt-title">
 						{{altTitle()}}
@@ -21,13 +21,10 @@
 			<mat-card-subtitle>
 				<app-experience-subtitle *ngIf="isExperience()"
 					[experience]="rTreeAsExperience()!"></app-experience-subtitle>
-				<p *ngIf="!isExperience()">Not experience</p>
 			</mat-card-subtitle>
 		</mat-card-header>
 		<mat-card-content>
-			<markdown>
-				This is a *description* of **my experience** at Visier.
-			</markdown>
+			<markdown [data]="description"></markdown>
 		</mat-card-content>
 	</mat-card>
 </div>

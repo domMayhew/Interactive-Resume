@@ -65,7 +65,6 @@ export class AppComponent {
   }
 
   showNodeDetails(node: Node): void {
-    console.log("Showing", node);
     this.selectedRTree = node.data?.rTree || {};
     this.detailsOpen = true;
   }

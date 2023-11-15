@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { assertEquals, validateEquals } from 'typia';
+import { validate } from 'typia';
 import { Node, Edge, ClusterNode, Graph } from '@swimlane/ngx-graph';
 
 import { Resume, ResumeTree } from './resume.model';
@@ -15,7 +15,7 @@ export class ResumeService {
 
   buildResume(jsonResume: Object): Resume {
     const resume: Resume = jsonResume as Resume;
-    const validation = validateEquals<Resume>(resume);
+    const validation = validate<Resume>(resume);
     if (validation.errors.length > 0) {
       console.error(validation.errors);
       console.error(resume);

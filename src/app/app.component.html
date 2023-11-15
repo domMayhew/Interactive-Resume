@@ -41,21 +41,27 @@
 							{{node.label}}
 						</text>
 						<!-- Duration -->
-						<text *ngIf="node.data.rTree.end"
+						<text *ngIf="node.data.rTree.end || node.data.rTree.grade"
 							[attr.x]="nodeWidth(node) - nodeConfig.durationPadding"
 							[attr.y]="nodeHeight(node)/2"
 							class="node-date"
 							text-anchor="end"
 							dominant-baseline="middle">
-							{{node.data.rTree.start | duration:node.data.rTree.end}}
+							{{node.data.rTree.start ?
+								(node.data.rTree.start | duration:node.data.rTree.end)
+								: node.data.rTree.grade
+							}}
 						</text>
 						<!-- Location -->
-						<text *ngIf="node.data.rTree.location"
+						<text *ngIf="node.data.rTree.location || node.data.rTree.level"
 							[attr.y]="nodeHeight(node)/2"
 							[attr.x]="10"
 							class="node-location"
 							dominant-baseline="middle">
-							{{node.data.rTree.location}}
+							{{node.data.rTree.location ?
+								node.data.rTree.location
+								: node.data.rTree.level
+							}}
 						</text>
 					</g>
 				</g>
@@ -144,7 +150,7 @@
 				xmlns="http://www.w3.org/2000/svg"
 				class="new-window-symbol"
 				viewBox="0 -960 960 960">
-				<use href="../assets/icons.svg#open-new-window"></use>
+				<use href="../../assets/icons.svg#open-new-window"></use>
 			</svg>
 			<!-- Open details click-box -->
 			<svg *ngIf="hasDetails(cluster)"

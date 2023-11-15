@@ -45,7 +45,8 @@
                 "codeReview",
                 "leadership",
                 "communication",
-                "scala"
+                "scala",
+                "network-protocols"
               ]
             },
             {
@@ -80,7 +81,155 @@
     {
       "id": "academics",
       "label": "Academics",
-      "description": "./markdown/academics-description.md"
+      "children": [
+        {
+          "id": "tru",
+          "label": "Bachelor of Computing Science",
+          "location": "TRU",
+          "description": "./markdown/academics-description.md",
+          "start": [
+            2021,
+            3
+          ],
+          "end": [
+            2024,
+            1
+          ],
+          "children": [
+            {
+              "id": "ai",
+              "label": "Applied Artificial Intelligence",
+              "grade": "A+",
+              "level": 300,
+              "neighbours": [
+                "ai-skill"
+              ]
+            },
+            {
+              "id": "algos",
+              "label": "Algorithm Design and Analysis",
+              "grade": "A",
+              "level": 300,
+              "neighbours": [
+                "algo-design-analysis"
+              ]
+            },
+            {
+              "id": "web-based-info-systems",
+              "label": "Web-based Information Systems",
+              "grade": "In progress",
+              "level": 400
+            },
+            {
+              "id": "os-class",
+              "label": "Operating Systems",
+              "grade": "A+",
+              "level": 300,
+              "neighbours": [
+                "os-skill"
+              ]
+            },
+            {
+              "id": "embedded-class",
+              "label": "Embedded/Robotics Programming",
+              "grade": "In progress",
+              "level": 400
+            },
+            {
+              "id": "distributed-class",
+              "label": "Distributed Programming",
+              "grade": "In progress",
+              "level": 400,
+              "neighbours": [
+                "network-protocols",
+                "distributed-skill"
+              ]
+            },
+            {
+              "id": "haskell-classes",
+              "label": "Haskell 1 & 2",
+              "grade": "5/5"
+            },
+            {
+              "id": "hci",
+              "label": "Human Computer Interaction Design",
+              "grade": "In progress",
+              "level": 300
+            },
+            {
+              "id": "software-eng",
+              "label": "Software Engineering",
+              "grade": "A-",
+              "level": 300
+            },
+            {
+              "id": "software-architecture-class",
+              "label": "Software Architecutre and Design",
+              "grade": "A+",
+              "level": 200,
+              "neighbours": [
+                "algo-design-analysis"
+              ]
+            },
+            {
+              "id": "internet-security",
+              "label": "Internet and Security Issues",
+              "grade": "A+",
+              "level": 300,
+              "neighbours": [
+                "network-protocols",
+                "analyzeRequirements"
+              ]
+            },
+            {
+              "id": "databases",
+              "label": "Database Systems",
+              "grade": "A",
+              "level": 300
+            },
+            {
+              "id": "networks",
+              "label": "Computer Networks",
+              "grade": "A",
+              "level": 300,
+              "neighbours": [
+                "network-protocols"
+              ]
+            },
+            {
+              "id": "mobile-app-development",
+              "label": "Mobile App Development I",
+              "grade": "A+",
+              "level": 200
+            },
+            {
+              "id": "discrete",
+              "label": "Discrete Mathematics",
+              "grade": "A+",
+              "level": 100
+            },
+            {
+              "id": "math-for-compsci",
+              "label": "Math for Computing Science",
+              "grade": "A+",
+              "level": 100
+            }
+          ]
+        },
+        {
+          "id": "ambrose",
+          "label": "Ambrose University",
+          "start": [
+            2013,
+            9
+          ],
+          "end": [
+            2016,
+            4
+          ],
+          "description": "This is a description of Ambrose."
+        }
+      ]
     },
     {
       "id": "projects",
@@ -116,11 +265,31 @@
         },
         {
           "id": "communication",
-          "label": "Technical and nontechnical communication"
+          "label": "Communicate technical and nontechnical concepts"
         },
         {
           "id": "technicalDocumentation",
           "label": "Technical Documentation"
+        },
+        {
+          "id": "algo-design-analysis",
+          "label": "Design & Analyize Algorithms"
+        },
+        {
+          "id": "os-skill",
+          "label": "Understand and OS concepts"
+        },
+        {
+          "id": "network-protocols",
+          "label": "Use network protocols"
+        },
+        {
+          "id": "distributed-skill",
+          "label": "Create distributed applications"
+        },
+        {
+          "id": "ai-skill",
+          "label": "Implement simple AI models"
         }
       ]
     },

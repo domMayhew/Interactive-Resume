@@ -13,11 +13,17 @@ $theme: mat.define-light-theme((color: (primary: $palette-primary,
         accent: $palette-accent,
         warn: $palette-warn,
       ),
-      typography: $typography,
-    ));
+      typography: $typography));
 
-@mixin get-typography($level) {
-  $typography-config: mat.get-typography-config($theme);
+$theme-sans-serif: mat.define-light-theme((color: (primary: $palette-primary,
+        accent: $palette-accent,
+        warn: $palette-warn,
+      ),
+      typography: mat.define-typography-config($font-family: Roboto)));
+
+
+@mixin get-typography($level, $requested-theme: $theme) {
+  $typography-config: mat.get-typography-config($requested-theme);
 
   font: {
     family: mat.font-family($typography-config, $level);
