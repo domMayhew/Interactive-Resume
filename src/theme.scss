@@ -3,57 +3,21 @@
 @use 'sass:map';
 
 // Palettes
-// $palette-primary: mat.define-palette(mat.$blue-palette);
 $palette-primary: (
-  50 : #e8eaf6,
-  100 : #c5cbe9,
-  200 : #9fa8da,
-  300 : #7985cb,
-  400 : #5c6bc0,
-  500 : #3f51b5,
-  600 : #394aae,
-  700 : #3140a5,
-  800 : #29379d,
-  900 : #1b278d,
-  A100 : #c6cbff,
-  A200 : #939dff,
-  A400 : #606eff,
-  A700 : #4757ff,
-  contrast: (50 : #000000,
-    100 : #000000,
-    200 : #000000,
-    300 : #000000,
-    400 : #ffffff,
-    500 : #ffffff,
-    600 : #ffffff,
-    700 : #ffffff,
-    800 : #ffffff,
-    900 : #ffffff,
-    A100 : #000000,
-    A200 : #000000,
-    A400 : #ffffff,
-    A700 : #ffffff,
-  )
-);
-
-
-// $palette-accent: mat.define-palette(mat.$yellow-palette);
-/* For use in src/lib/core/theming/_palette.scss */
-$palette-accent: (
-  50 : #fefbf3,
-  100 : #fdf5e0,
-  200 : #fbeecc,
-  300 : #f9e7b7,
-  400 : #f8e1a7,
-  500 : #f7dc98,
-  600 : #f6d890,
-  700 : #f5d385,
-  800 : #f3ce7b,
-  900 : #f1c56a,
+  50 : #f9fffa,
+  100 : #f1fff4,
+  200 : #e8ffec,
+  300 : #deffe4,
+  400 : #d7ffdf,
+  500 : #d0ffd9,
+  600 : #cbffd5,
+  700 : #c4ffcf,
+  800 : #beffca,
+  900 : #b3ffc0,
   A100 : #ffffff,
   A200 : #ffffff,
-  A400 : #fffffe,
-  A700 : #fff6e5,
+  A400 : #ffffff,
+  A700 : #ffffff,
   contrast: (50 : #000000,
     100 : #000000,
     200 : #000000,
@@ -71,22 +35,60 @@ $palette-accent: (
   )
 );
 
+$palette-accent: (
+  50 : #f5ebe8,
+  100 : #e6ccc6,
+  200 : #d6aba1,
+  300 : #c5897b,
+  400 : #b86f5e,
+  500 : #ac5642,
+  600 : #a54f3c,
+  700 : #9b4533,
+  800 : #923c2b,
+  900 : #822b1d,
+  A100 : #ffc5be,
+  A200 : #ff998b,
+  A400 : #ff6c58,
+  A700 : #ff553e,
+  contrast: (50 : #000000,
+    100 : #000000,
+    200 : #000000,
+    300 : #000000,
+    400 : #000000,
+    500 : #ffffff,
+    600 : #ffffff,
+    700 : #ffffff,
+    800 : #ffffff,
+    900 : #ffffff,
+    A100 : #000000,
+    A200 : #000000,
+    A400 : #000000,
+    A700 : #000000,
+  )
+);
+
 $palette-warn: mat.define-palette(mat.$red-palette);
+$background-color: #444444;
+$cluster-background-color: #bab6cc;
+$edge-shadow-color: rgba(255 255 0 / 0.4);
+$edge-shadow-color-connected: rgba(255 255 0 / 0);
 
 // Typography
-$typography: mat.define-typography-config($font-family: Inconsolata);
+$typography-body: mat.define-typography-config($font-family: "Open Sans");
+$typography-headers: mat.define-typography-config($font-family: "Roboto");
 
+// Theme
 $theme: mat.define-light-theme((color: (primary: $palette-primary,
         accent: $palette-accent,
         warn: $palette-warn,
       ),
-      typography: $typography));
+      typography: $typography-body));
 
-$theme-sans-serif: mat.define-light-theme((color: (primary: $palette-primary,
+$theme-roboto: mat.define-light-theme((color: (primary: $palette-primary,
         accent: $palette-accent,
         warn: $palette-warn,
       ),
-      typography: mat.define-typography-config($font-family: Roboto)));
+      typography: $typography-headers));
 
 
 @mixin get-typography($level, $requested-theme: $theme) {
@@ -108,7 +110,6 @@ $theme-sans-serif: mat.define-light-theme((color: (primary: $palette-primary,
   $color-config: mat.get-color-config($theme);
   $palette: map.get($color-config, $paletteName);
   $color: mat.get-color-from-palette($palette, $hue);
-  // $color: mat-color($palette, $hue);
   @return $color;
 
 }

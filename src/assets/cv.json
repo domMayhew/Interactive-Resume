@@ -5,11 +5,15 @@
     "description": "./markdown/bio.md",
     "image": "assets/images/profile.jpg"
   },
+  "welcome": {
+    "id": "welcome",
+    "label": "Welcome",
+    "description": "./markdown/welcome.md"
+  },
   "entries": [
     {
       "id": "experiences",
       "label": "Work Experiences",
-      "expanded": true,
       "children": [
         {
           "id": "visier",
@@ -206,7 +210,10 @@
               "id": "mobile-app-development",
               "label": "Mobile App Development I",
               "grade": "A+",
-              "level": 200
+              "level": 200,
+              "neighbours": [
+                "calculator"
+              ]
             },
             {
               "id": "discrete",

@@ -11,3 +11,17 @@
     local("Inconsolata"),
     url("./inconsolata/Inconsolata-VariableFont_wdth,wght.ttf") format('truetype');
 }
+
+@font-face {
+  font-family: "Open Sans";
+  src:
+    local("Open Sans"),
+    url("./open_sans/OpenSans-VariableFont_wdth\,wght.ttf")
+}
+
+@font-face {
+  font-family: "Roboto";
+  src:
+    local("Roboto"),
+    url("./roboto/Roboto-Regular.ttf") format('truetype');
+}

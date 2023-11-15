@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Node, Edge, Graph } from '@swimlane/ngx-graph';
 import { ResumeService } from './resume/resume.service';
-import { Experience, Resume, ResumeTree, Bio } from './resume/resume.model';
+import { Experience, Resume, ResumeTree, Info } from './resume/resume.model';
 import { Observable, Subject } from 'rxjs';
 import { ConfigService } from './config-service';
 import typia from 'typia';
@@ -14,10 +14,9 @@ import typia from 'typia';
 })
 export class AppComponent {
 
-  constructor(private readonly resumeService: ResumeService, private readonly config: ConfigService) { };
+  constructor(private readonly resumeService: ResumeService, readonly config: ConfigService) { };
 
   readonly title = 'icv';
-
 
   public readonly layoutSettings = this.config.layoutSettings;
   public readonly layout = this.config.layout;
@@ -30,7 +29,11 @@ export class AppComponent {
   selectedRTree: ResumeTree = this.resume.entries[0];
   detailsOpen: boolean = false;
 
-  public readonly bio: Bio = this.resume.bio;
+  public readonly bio: Info = this.resume.bio;
+
+  ngOnInit(): void {
+    this.showWelcome();
+  }
 
   connectedEdges(node: Node): Edge[] {
     return this.graph.edges.filter(e => e.source == node.id || e.target == node.id);
@@ -123,6 +126,12 @@ export class AppComponent {
   /** BIO **/
   showBio() {
     this.selectedRTree = this.bio || {};
+    this.detailsOpen = true;
+  }
+
+  /** WELCOME **/
+  showWelcome() {
+    this.selectedRTree = this.resume.welcome || {};
     this.detailsOpen = true;
   }
 }

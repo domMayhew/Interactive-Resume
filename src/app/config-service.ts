@@ -14,7 +14,8 @@ export class ConfigService {
     nodePadding: 0,
     edgePadding: 45,
     rankPadding: 100,
-    orientation: "LR"
+    orientation: "LR",
+    marginY: 400
   };
 
   public readonly nodeConfig = {
@@ -64,7 +65,7 @@ export class ConfigService {
     },
     textOffset: {
       x: 0,
-      y: 14
+      y: 9
     },
     durationPadding: {
       x: 50,
@@ -106,9 +107,9 @@ export class ConfigService {
       r: 50
     },
     textbox: {
-      actualWidth: 100,
+      actualWidth: 110,
       actualHeight: 30,
-      width: 100 * 2540 / (50 * 2),
+      width: 110 * 2540 / (50 * 2),
       height: 30 * 2540 / (50 * 2),
       rx: 2 * 2540 / (50 * 2),
       ry: 2 * 2540 / (50 * 2),

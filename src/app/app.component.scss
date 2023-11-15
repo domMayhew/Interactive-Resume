@@ -6,7 +6,7 @@ div.app-container {
   display: block;
   height: 1000vh;
   width: 1000vw;
-  background-color: theme.get-color(accent, 100);
+  background-color: theme.$background-color;
 }
 
 app-bio {
@@ -25,14 +25,14 @@ svg text {
 .node-rect {
   stroke-width: 1px;
   transition: 0.3s;
-  fill: theme.get-color(primary, 100);
+  fill: theme.get-color(primary, 500);
 }
 
 path.connected,
 .node-rect:hover {
   stroke-width: 2px;
   stroke-opacity: 1;
-  filter: drop-shadow(0 0 3px rgb(255 255 0 / 0.4));
+  filter: drop-shadow(theme.$edge-shadow-color-connected);
 }
 
 /* CLUSTERS */
@@ -40,7 +40,7 @@ path.connected,
 .cluster-rect {
   filter: drop-shadow(0 0 3px rgba(0 0 0 / 0.2));
   transition: 0.3s;
-  fill: theme.get-color(accent, 50);
+  fill: theme.$cluster-background-color;
 }
 
 svg.hovered rect.cluster-rect {
@@ -49,7 +49,7 @@ svg.hovered rect.cluster-rect {
 
 
 .cluster-header {
-  fill: theme.get-color(primary, 900);
+  fill: theme.get-color(accent, 500);
 
   ~text {
     fill: white;
@@ -70,6 +70,7 @@ svg {
 
   path {
     transition: 0.3s;
+    stroke: theme.$edge-shadow-color;
   }
 
   .node-date,

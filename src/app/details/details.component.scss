@@ -1,6 +1,6 @@
 @use '@angular/material' as mat;
 @use '../../theme.scss' as theme;
-@include mat.card-theme(theme.$theme-sans-serif);
+@include mat.card-theme(theme.$theme-roboto);
 
 div.card-container {
   position: fixed;
@@ -62,7 +62,7 @@ div.card-container {
 }
 
 markdown {
-  @include theme.get-typography(body-1, theme.$theme-sans-serif);
+  @include theme.get-typography(body-1, theme.$theme-roboto);
   text-align: justify;
   line-height: 1.5;
 }

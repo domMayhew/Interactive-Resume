@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { ConfigService } from '../config-service';
-import { Bio } from '../resume/resume.model';
+import { Info } from '../resume/resume.model';
 
 @Component({
   selector: 'app-bio',
@@ -9,6 +9,6 @@ import { Bio } from '../resume/resume.model';
   providers: [ConfigService]
 })
 export class BioComponent {
-  @Input({ required: true }) bio!: Bio;
+  @Input({ required: true }) bio!: Info;
   constructor(readonly config: ConfigService) { }
 }

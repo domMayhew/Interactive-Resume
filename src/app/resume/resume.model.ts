@@ -1,14 +1,18 @@
 import * as _ from "lodash";
 
 interface Resume {
-  bio: Bio,
+  bio: Info,
+  welcome: Info,
   entries: ResumeTree[];
 }
 
-interface Bio {
+interface Info {
   readonly id: string,
   readonly label: string,
-  readonly description: string,
+  readonly description: string
+}
+
+interface Bio extends Info {
   readonly image: string
 }
 
@@ -47,5 +51,5 @@ export type {
   Experience,
   Class,
   Project,
-  Bio
+  Info
 }
