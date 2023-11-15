@@ -249,6 +249,18 @@
       "label": "Projects",
       "children": [
         {
+          "id": "iresume",
+          "label": "Interactive Resume",
+          "github": "https://github.com/domMayhew/Interactive-Resume",
+          "language": "Angular",
+          "description": "This is the project you are currently viewing! The resume data is provided in a JSON file, and `ngx-graph` lays out the position of each element. I wrote the logic behind creating and updating the edges when an entry is expanded/collapsed, and I created the presentation.",
+          "neighbours": [
+            "angular",
+            "typescript",
+            "automatedTesting"
+          ]
+        },
+        {
           "id": "nqueens",
           "label": "nQueens",
           "language": "Haskell",
