@@ -1,4 +1,7 @@
 <div class="app-container">
+	<app-bio *ngIf="bio"
+		[bio]="bio"
+		(click)="showBio()"></app-bio>
 	<app-details *ngIf="detailsOpen"
 		[rTree]="selectedRTree"
 		(close)="closeDetails()"></app-details>
@@ -15,86 +18,99 @@
 		<ng-template #nodeTemplate
 			let-node>
 			<!-- Node SVG -->
-			<svg [class]="node.data.connected ? 'node-container connected' : 'node-container'"
-				(mouseover)="setConnections(node, true)"
-				(mouseleave)="setConnections(node, false)"
-				(dblclick)="expandNode(node)"
-				version="1.1"
-				xmlns="http://www.w3.org/2000/svg">
-				<!-- Translate to provide space for drop shadow -->
-				<g attr.transform="translate({{nodeConfig.translate.x}}, {{nodeConfig.translate.y}})">
-					<!-- Outline -->
-					<rect [attr.width]="nodeWidth(node)"
-						[attr.height]="nodeHeight(node)"
-						[attr.rx]="nodeConfig.rounding.x"
-						[attr.ry]="nodeConfig.rounding.y"
-						class="node-rect"
-						stroke="slategrey"
-						stroke-width="1"></rect>
-					<!-- Text elements -->
-					<!-- Translate to provide better centering -->
-					<g transform="translate(0, 1)">
-						<!-- Label -->
-						<text [attr.x]="nodeWidth(node)/2"
-							[attr.y]="nodeHeight(node)/2"
-							class="node-text"
-							text-anchor="middle"
-							dominant-baseline="middle">
-							{{node.label}}
-						</text>
-						<!-- Duration -->
-						<text *ngIf="node.data.rTree.end || node.data.rTree.grade"
-							[attr.x]="nodeWidth(node) - nodeConfig.durationPadding"
-							[attr.y]="nodeHeight(node)/2"
-							class="node-date"
-							text-anchor="end"
-							dominant-baseline="middle">
-							{{node.data.rTree.start ?
+			<ng-container *ngIf="node.data?.rTree?.image">
+				<svg xmlns="http://www.w3.org/2000/svg"
+					class="image-node"
+					width="1000"
+					height="1000"
+					viewBox="0 0 1000 1000">
+					<circle cx="50"
+						cy="50"
+						r="50"></circle>
+				</svg>
+			</ng-container>
+			<ng-container *ngIf="!node.data?.rTree?.image">
+				<svg [class]="node.data.connected ? 'node-container connected' : 'node-container'"
+					(mouseover)="setConnections(node, true)"
+					(mouseleave)="setConnections(node, false)"
+					(dblclick)="expandNode(node)"
+					version="1.1"
+					xmlns="http://www.w3.org/2000/svg">
+					<!-- Translate to provide space for drop shadow -->
+					<g attr.transform="translate({{nodeConfig.translate.x}}, {{nodeConfig.translate.y}})">
+						<!-- Outline -->
+						<rect [attr.width]="nodeWidth(node)"
+							[attr.height]="nodeHeight(node)"
+							[attr.rx]="nodeConfig.rounding.x"
+							[attr.ry]="nodeConfig.rounding.y"
+							class="node-rect"
+							stroke="slategrey"
+							stroke-width="1"></rect>
+						<!-- Text elements -->
+						<!-- Translate to provide better centering -->
+						<g transform="translate(0, 1)">
+							<!-- Label -->
+							<text [attr.x]="nodeWidth(node)/2"
+								[attr.y]="nodeHeight(node)/2"
+								class="node-text"
+								text-anchor="middle"
+								dominant-baseline="middle">
+								{{node.label}}
+							</text>
+							<!-- Duration -->
+							<text *ngIf="node.data.rTree.end || node.data.rTree.grade"
+								[attr.x]="nodeWidth(node) - nodeConfig.durationPadding"
+								[attr.y]="nodeHeight(node)/2"
+								class="node-date"
+								text-anchor="end"
+								dominant-baseline="middle">
+								{{node.data.rTree.start ?
 								(node.data.rTree.start | duration:node.data.rTree.end)
 								: node.data.rTree.grade
 							}}
-						</text>
-						<!-- Location -->
-						<text *ngIf="node.data.rTree.location || node.data.rTree.level"
-							[attr.y]="nodeHeight(node)/2"
-							[attr.x]="10"
-							class="node-location"
-							dominant-baseline="middle">
-							{{node.data.rTree.location ?
+							</text>
+							<!-- Location -->
+							<text *ngIf="node.data.rTree.location || node.data.rTree.level"
+								[attr.y]="nodeHeight(node)/2"
+								[attr.x]="10"
+								class="node-location"
+								dominant-baseline="middle">
+								{{node.data.rTree.location ?
 								node.data.rTree.location
 								: node.data.rTree.level
 							}}
-						</text>
+							</text>
+						</g>
 					</g>
-				</g>
-			</svg>
-			<!-- Details -->
-			<!-- Open details icon -->
-			<svg *ngIf="hasDetails(node)"
-				[attr.x]="nodeWidth(node)-nodeConfig.openDetails.padding.x"
-				[attr.y]="nodeConfig.openDetails.offset.y"
-				[attr.width]="nodeConfig.openDetails.dimension.width"
-				[attr.height]="nodeConfig.openDetails.dimension.height"
-				[attr.opacity]="nodeConfig.openDetails.opacity"
-				xmlns="http://www.w3.org/2000/svg"
-				class="new-window-symbol"
-				viewBox="0 -960 960 960">
-				<use href="../assets/icons.svg#open-new-window"></use>
-			</svg>
-			<!-- Open details click-box -->
-			<svg *ngIf="hasDetails(node)"
-				[attr.x]="nodeWidth(node)-30"
-				[attr.y]="1"
-				width="30"
-				height="30"
-				class="new-window-symbol-clickbox"
-				xmlns="http://www.w3.org/2000/svg"
-				viewBox="0 0 24 24">
-				<rect (click)="showNodeDetails(node)"
-					width="24"
-					height="24"
-					fill-opacity="0"></rect>
-			</svg>
+				</svg>
+				<!-- Details -->
+				<!-- Open details icon -->
+				<svg *ngIf="hasDetails(node)"
+					[attr.x]="nodeWidth(node)-nodeConfig.openDetails.padding.x"
+					[attr.y]="nodeConfig.openDetails.offset.y"
+					[attr.width]="nodeConfig.openDetails.dimension.width"
+					[attr.height]="nodeConfig.openDetails.dimension.height"
+					[attr.opacity]="nodeConfig.openDetails.opacity"
+					xmlns="http://www.w3.org/2000/svg"
+					class="new-window-symbol"
+					viewBox="0 -960 960 960">
+					<use href="../assets/icons.svg#open-new-window"></use>
+				</svg>
+				<!-- Open details click-box -->
+				<svg *ngIf="hasDetails(node)"
+					[attr.x]="nodeWidth(node)-30"
+					[attr.y]="1"
+					width="30"
+					height="30"
+					class="new-window-symbol-clickbox"
+					xmlns="http://www.w3.org/2000/svg"
+					viewBox="0 0 24 24">
+					<rect (click)="showNodeDetails(node)"
+						width="24"
+						height="24"
+						fill-opacity="0"></rect>
+				</svg>
+			</ng-container>
 		</ng-template>
 
 		<!-- Clusters -->

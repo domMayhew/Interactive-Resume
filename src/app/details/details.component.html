@@ -21,10 +21,15 @@
 			<mat-card-subtitle>
 				<app-experience-subtitle *ngIf="isExperience()"
 					[experience]="rTreeAsExperience()!"></app-experience-subtitle>
+				<app-project-subtitle *ngIf="isProject()"
+					[project]="rTreeAsProject()!"></app-project-subtitle>
 			</mat-card-subtitle>
 		</mat-card-header>
 		<mat-card-content>
-			<markdown [data]="description"></markdown>
+			<markdown *ngIf="description && description.endsWith('.md')"
+				[src]="'assets/' + description"></markdown>
+			<markdown *ngIf="description && !description.endsWith('.md')"
+				[data]="description"></markdown>
 		</mat-card-content>
 	</mat-card>
 </div>

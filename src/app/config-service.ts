@@ -95,5 +95,26 @@ export class ConfigService {
     }
   }
 
+  public readonly bio = {
+    profile: {
+      width: 2540,
+      height: 2540
+    },
+    circle: {
+      cx: 50,
+      cy: 50,
+      r: 50
+    },
+    textbox: {
+      actualWidth: 100,
+      actualHeight: 30,
+      width: 100 * 2540 / (50 * 2),
+      height: 30 * 2540 / (50 * 2),
+      rx: 2 * 2540 / (50 * 2),
+      ry: 2 * 2540 / (50 * 2),
+    },
+    strokeWidth: 30
+  }
+
   public readonly layout = "dagreCluster";
 }

@@ -6,24 +6,27 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { NgxGraphModule } from '@swimlane/ngx-graph';
-// import { MarkdownModule } from 'ngx-markdown';
 import { ResumeService } from './resume/resume.service';
 import { ConfigService } from './config-service';
 import { VectorDate } from './datePipe';
 import { DetailsComponent } from './details/details.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
-import { ExperienceSubtitleComponent } from './details/subtitle/experience-subtitle.component';
+import { ExperienceSubtitleComponent } from './details/experience-subtitle/experience-subtitle.component';
 import { MarkdownModule } from 'ngx-markdown';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { MatIconModule } from '@angular/material/icon';
 import { DurationPipe } from './durationPipe';
+import { ProjectSubtitleComponent } from './details/project-subtitle/project-subtitle.component';
+import { BioComponent } from './bio/bio.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DetailsComponent,
     ExperienceSubtitleComponent,
+    ProjectSubtitleComponent,
+    BioComponent,
   ],
   imports: [
     BrowserModule,

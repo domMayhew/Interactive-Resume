@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Node, Edge, Graph } from '@swimlane/ngx-graph';
 import { ResumeService } from './resume/resume.service';
-import { Experience, Resume, ResumeTree } from './resume/resume.model';
+import { Experience, Resume, ResumeTree, Bio } from './resume/resume.model';
 import { Observable, Subject } from 'rxjs';
 import { ConfigService } from './config-service';
 import typia from 'typia';
@@ -18,6 +18,7 @@ export class AppComponent {
 
   readonly title = 'icv';
 
+
   public readonly layoutSettings = this.config.layoutSettings;
   public readonly layout = this.config.layout;
   public readonly nodeConfig = this.config.nodeConfig;
@@ -28,6 +29,8 @@ export class AppComponent {
 
   selectedRTree: ResumeTree = this.resume.entries[0];
   detailsOpen: boolean = false;
+
+  public readonly bio: Bio = this.resume.bio;
 
   connectedEdges(node: Node): Edge[] {
     return this.graph.edges.filter(e => e.source == node.id || e.target == node.id);
@@ -84,7 +87,7 @@ export class AppComponent {
   }
 
   hasDetails(node: Node): boolean {
-    return typia.is<Experience>(node.data?.rTree || {});
+    return typia.is<Experience>(node.data?.rTree || {}) || node.data?.rTree?.description != null;
   }
 
   /** CLUSTER EVENTS **/
@@ -96,7 +99,6 @@ export class AppComponent {
     const el: Element = event.target as Element;
     if (!el.classList.contains("hovered")) {
       el.classList.add("hovered");
-      console.log(el);
     }
   }
 
@@ -116,5 +118,11 @@ export class AppComponent {
   expandCollapse(node: Node): void {
     this.resume = this.resumeService.toggleExpanded(this.resume, node.data?.path);
     this.graph = this.resumeService.buildGraph(this.resume);
+  }
+
+  /** BIO **/
+  showBio() {
+    this.selectedRTree = this.bio || {};
+    this.detailsOpen = true;
   }
 }

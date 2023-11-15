@@ -1,0 +1,12 @@
+<div class="subtitle-container">
+	<div>
+		{{project.language}}
+	</div>
+	<div *ngIf="project.link">{{project.link}}</div>
+	<div *ngIf="project.github">
+		<a attr.href="{{project.github}}"
+			target="_blank">
+			GitHub
+		</a>
+	</div>
+</div>

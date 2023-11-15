@@ -1,13 +1,12 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Experience, ResumeTree } from '../resume/resume.model';
+import { Experience, Project, ResumeTree } from '../resume/resume.model';
 import typia from 'typia';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-details',
   templateUrl: './details.component.html',
-  styleUrls: ['./details.component.scss'],
-  providers: [HttpClient]
+  styleUrls: ['./details.component.scss']
 })
 export class DetailsComponent {
   @Input({ required: true }) rTree!: ResumeTree;
@@ -15,23 +14,15 @@ export class DetailsComponent {
 
   public description: string = "";
 
-  constructor(private readonly http: HttpClient) { };
-
   ngOnInit(): void {
-    const rTreeDescription = this.rTreeAsExperience()?.description || "";
-
-    if (rTreeDescription.endsWith(".md")) {
-      this.http.get('./assets/' + rTreeDescription, {
-        responseType: "text"
-      })
-        .subscribe((str: string) => this.description = str);
-    } else {
-      this.description = rTreeDescription;
-    }
+    this.description = this.rTree.description || "";
   }
 
   isExperience = () => typia.is<Experience>(this.rTree);
   rTreeAsExperience = (): Experience | undefined => this.isExperience() ? typia.assert<Experience>(this.rTree) : undefined;
   title = () => this.rTreeAsExperience()?.title || this.rTree.label;
   altTitle = () => this.rTreeAsExperience()?.title ? (this.rTree?.label || '') : '';
+
+  isProject = () => typia.is<Project>(this.rTree);
+  rTreeAsProject = (): Project | undefined => this.isProject() ? typia.assert<Project>(this.rTree) : undefined;
 }

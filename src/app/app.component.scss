@@ -4,9 +4,15 @@
 
 div.app-container {
   display: block;
-  height: 300vh;
-  width: 300vw;
+  height: 1000vh;
+  width: 1000vw;
   background-color: theme.get-color(accent, 100);
+}
+
+app-bio {
+  position: fixed;
+  top: 0.5rem;
+  left: 0.5rem;
 }
 
 // Prevent text SVG elements from stealing 'hover' from its parent

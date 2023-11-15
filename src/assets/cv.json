@@ -1,4 +1,10 @@
 {
+  "bio": {
+    "id": "bio",
+    "label": "About Me",
+    "description": "./markdown/bio.md",
+    "image": "assets/images/profile.jpg"
+  },
   "entries": [
     {
       "id": "experiences",
@@ -24,14 +30,14 @@
             {
               "id": "batchErrors",
               "label": "Catch and Handle Batch Job Errors",
-              "description": "Batch jobs needed a configuration option to fail and stop processing when any of its children failed. I *designed* a few different solutions and *collaborated with cross-team stakeholders* to choose the best design, implement the design, and write *automated tests*. I demonstrated *flexibility* when we decided to switch to a different design after implementation.",
+              "description": "Batch jobs needed a configuration option to fail and stop processing when any of its children failed. I *designed* a few different solutions and *collaborated with cross-team stakeholders* to choose the best design, implement the design, and write *automated tests*. I demonstrated *flexible* when we decided to switch to a different design after implementation.",
               "neighbours": [
                 "crossteamCollaboration",
                 "architectureAndDesign",
                 "automatedTesting",
                 "scala",
                 "scalaTest",
-                "flexibility"
+                "flexible"
               ]
             },
             {
@@ -218,7 +224,7 @@
         },
         {
           "id": "ambrose",
-          "label": "Ambrose University",
+          "label": "Ambrose",
           "start": [
             2013,
             9
@@ -227,17 +233,49 @@
             2016,
             4
           ],
-          "description": "This is a description of Ambrose."
+          "description": "I completed three years of a Bachelor of Christian Ministry. Unfortunately, I went through a major life change and could not complete the degree due to no longer subscribing to the Christian faith. Nevertheless, I learned a lot about leading teams; working with people; and speaking, writing, and thinking with clarity. I also spent a lot of time reflecting on what is important to me, and I feel lucky to have found a new career that I am incredibly passionate about and find both fulfilling and exciting."
         }
       ]
     },
     {
       "id": "projects",
-      "label": "Projects"
-    },
-    {
-      "id": "life",
-      "label": "Life Experiences"
+      "label": "Projects",
+      "children": [
+        {
+          "id": "nqueens",
+          "label": "nQueens",
+          "language": "Haskell",
+          "github": "https://github.com/domMayhew/nQueens/",
+          "description": "Solves the nQueens problem for an arbitrary number of queens and produces a graphical representation of all possible solutions. Written in Haskell.\n\nAll solutions to 4-queens:\n\n![All solutions to 4-queens](assets/images/4queens.png)\n\nAll solutions to 12-queens:\n\n![All solutions to 12-queens](assets/images/12queens.png)",
+          "neighbours": [
+            "algo-design-analysis",
+            "functional-programming",
+            "haskell"
+          ]
+        },
+        {
+          "id": "exemplar-project",
+          "label": "Example and Test Enablement App",
+          "language": "JavaScript",
+          "github": "https://github.com/visier/embedding-exemplar",
+          "description": "During my coop at Visier, I created a public repo of a locally-hosted web application that embeds Visier's software in less than five minutes configuration. Visier's offerings include an embedded SasS product for enterprise customers. Those customers often found onboarding challenging. Embedding a SasS product into your own has complications surrounding CORS policies, cross-site scripting, and authentication (in this case, SAML 2.0). I wrote an application that provided:\n\n1. A live example of embedding Visier's software in **less than five minutes configuration**.\n1. Example code that users could duplicate in their own application.\n1. A live reference of working SAML authentications.\n1. Extensive technical documentation.\n\nThe project is published on [Visier's public GitHub](https://github.com/visier/embedding-exemplar).",
+          "neighbours": [
+            "exemplar",
+            "express",
+            "network-protocols",
+            "technicalDocumentation",
+            "javascript",
+            "saml"
+          ]
+        },
+        {
+          "id": "calculator",
+          "label": "Live Feedback Calculator",
+          "language": "Android App",
+          "github": "https://github.com/domMayhew/Calculator-App",
+          "description": "A calculator that provides live feedback regarding errors and the value of completed subexpressions. Errors are highlighted as you enter them, and some errors are only highlighted if you try to evaluate the expression (e.g., an unclosed subexpression). There's still a few bugs, but it was above and beyond the requirements for the assignment.\n\n<img src='assets/images/calculator.png' width=200/>"
+        }
+      ]
     },
     {
       "id": "skills",
@@ -401,6 +439,10 @@
               "label": "SSO"
             }
           ]
+        },
+        {
+          "id": "functional-programming",
+          "label": "Functional Programming"
         }
       ]
     },
@@ -409,8 +451,8 @@
       "label": "Character Traits",
       "children": [
         {
-          "id": "flexibility",
-          "label": "Flexibility"
+          "id": "flexible",
+          "label": "flexible"
         },
         {
           "id": "leadership",
