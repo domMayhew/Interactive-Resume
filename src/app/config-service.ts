@@ -31,6 +31,10 @@ export class ConfigService {
       x: 2,
       y: 2
     },
+    expandableRectOffset: {
+      x: 5,
+      y: 5
+    },
     durationPadding: 40,
     openDetails: {
       padding: {

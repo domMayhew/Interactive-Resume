@@ -28,6 +28,10 @@ svg text {
   fill: theme.get-color(primary, 500);
 }
 
+.double {
+  fill: darken(theme.get-color(primary, 500), 30%);
+}
+
 path.connected,
 .node-rect:hover {
   stroke-width: 2px;
@@ -38,13 +42,13 @@ path.connected,
 /* CLUSTERS */
 
 .cluster-rect {
-  filter: drop-shadow(0 0 3px rgba(0 0 0 / 0.2));
+  filter: drop-shadow(0 0 3px rgba(255 255 255 / 0.2));
   transition: 0.3s;
   fill: theme.$cluster-background-color;
 }
 
 svg.hovered rect.cluster-rect {
-  filter: drop-shadow(0 0 8px rgb(0 0 0 / 0.4));
+  filter: drop-shadow(0 0 3px rgb(255 255 255 / 0.6));
 }
 
 

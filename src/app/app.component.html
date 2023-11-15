@@ -18,7 +18,7 @@
 
 		<ng-template #nodeTemplate
 			let-node>
-			<!-- Node SVG -->
+			<!-- Bio SVG -->
 			<ng-container *ngIf="node.data?.rTree?.image">
 				<svg xmlns="http://www.w3.org/2000/svg"
 					class="image-node"
@@ -30,6 +30,7 @@
 						r="50"></circle>
 				</svg>
 			</ng-container>
+			<!-- Node SVG -->
 			<ng-container *ngIf="!node.data?.rTree?.image">
 				<svg [class]="node.data.connected ? 'node-container connected' : 'node-container'"
 					(mouseover)="setConnections(node, true)"
@@ -39,6 +40,17 @@
 					xmlns="http://www.w3.org/2000/svg">
 					<!-- Translate to provide space for drop shadow -->
 					<g attr.transform="translate({{nodeConfig.translate.x}}, {{nodeConfig.translate.y}})">
+						<!-- Double outline for expandable nodes -->
+						<rect *ngIf="isExpandable(node)"
+							[attr.x]="nodeConfig.expandableRectOffset.x"
+							[attr.y]="nodeConfig.expandableRectOffset.y"
+							[attr.width]="nodeWidth(node)"
+							[attr.height]="nodeHeight(node)"
+							[attr.rx]="nodeConfig.rounding.x"
+							[attr.ry]="nodeConfig.rounding.y"
+							class="node-rect double"
+							stroke="slategrey"
+							stroke-width="1"></rect>
 						<!-- Outline -->
 						<rect [attr.width]="nodeWidth(node)"
 							[attr.height]="nodeHeight(node)"
