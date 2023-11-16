@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Experience } from 'src/app/resume/resume.model';
+import { Experience } from 'src/app/models/resume.model';
 
 @Component({
   selector: 'app-experience-subtitle',

@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Experience, Project, ResumeTree } from '../resume/resume.model';
+import { Experience, Project, ResumeTree } from '../models/resume.model';
 import typia from 'typia';
 import { HttpClient } from '@angular/common/http';
 

@@ -6,8 +6,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { NgxGraphModule } from '@swimlane/ngx-graph';
-import { ResumeService } from './resume/resume.service';
-import { ConfigService } from './config-service';
+import { ResumeService } from './services/resume/resume.service';
+import { ConfigService } from './services/config-service';
 import { VectorDate } from './datePipe';
 import { DetailsComponent } from './details/details.component';
 import { MatCardModule } from '@angular/material/card';

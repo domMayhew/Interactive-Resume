@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Project } from 'src/app/resume/resume.model';
+import { Project } from 'src/app/models/resume.model';
 
 @Component({
   selector: 'app-project-subtitle',

@@ -1,13 +1,15 @@
 import { TestBed } from '@angular/core/testing';
 
 import { ResumeService } from './resume.service';
-import { validateEquals } from 'typia';
-import { Resume, ResumeTree } from './resume.model';
+import { validate } from 'typia';
+import { Resume, ResumeTree } from '../../models/resume.model';
 import * as _ from 'lodash';
 import { Edge } from '@swimlane/ngx-graph';
 import { ConfigService } from '../config-service';
 
 const testResume: Resume = {
+  bio: { id: "", label: "", description: "" },
+  welcome: { id: "", label: "", description: "" },
   entries: [
     {
       id: "0",
@@ -66,7 +68,7 @@ describe('ResumeService', () => {
   });
 
   it('json should match interface', () => {
-    expect(validateEquals<Resume>(service.buildResume(config.jsonResume)).errors).toEqual([]);
+    expect(validate<Resume>(service.buildResume(config.jsonResume)).errors).toEqual([]);
   })
 
   it('all entries should have unique IDs', () => {

@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
 import { Node, Edge, Graph } from '@swimlane/ngx-graph';
-import { ResumeService } from './resume/resume.service';
-import { Experience, Resume, ResumeTree, Info } from './resume/resume.model';
-import { Observable, Subject } from 'rxjs';
-import { ConfigService } from './config-service';
+import { ResumeService } from './services/resume/resume.service';
+import { Experience, Resume, ResumeTree, Info } from './models/resume.model';
+import { ConfigService } from './services/config-service';
 import typia from 'typia';
 
 @Component({
@@ -16,7 +15,7 @@ export class AppComponent {
 
   constructor(private readonly resumeService: ResumeService, readonly config: ConfigService) { };
 
-  readonly title = 'icv';
+  readonly title = 'Dominic Mayhew';
 
   public readonly layoutSettings = this.config.layoutSettings;
   public readonly layout = this.config.layout;

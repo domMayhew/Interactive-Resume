@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import jsonResume from '../assets/cv.json';
+import jsonResume from '../../assets/cv.json';
 @Injectable({
   providedIn: 'root'
 })
