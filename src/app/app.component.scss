@@ -42,13 +42,13 @@ path.connected,
 /* CLUSTERS */
 
 .cluster-rect {
-  filter: drop-shadow(0 0 3px rgba(255 255 255 / 0.2));
+  filter: drop-shadow(0 0 5px rgba(0 0 0 / 0.6));
   transition: 0.3s;
   fill: theme.$cluster-background-color;
 }
 
 svg.hovered rect.cluster-rect {
-  filter: drop-shadow(0 0 3px rgb(255 255 255 / 0.6));
+  filter: drop-shadow(0 0 10px rgb(0 0 0 / 0.8));
 }
 
 
