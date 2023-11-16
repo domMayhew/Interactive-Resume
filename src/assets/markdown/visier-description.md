@@ -1,5 +1,5 @@
 &nbsp;&nbsp;&nbsp;&nbsp;
-At Visier I quickly became a valuable member of my team, at times even taking a leadership role with less experienced coops. I completed four significant client-facing projects that added value to Visier's SaSS application in the following ways:
+At Visier I quickly became a valuable member of my team, at times even taking a leadership role with less experienced coops. I completed four significant client-facing projects that added value to Visier's SasS application in the following ways:
 - *Project:* Publish a simple example and test enablement application
   - *Value:* **Reduce customer onboarding time**
 - *Project:* Create a custom user-interface for API documentation
