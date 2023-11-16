@@ -12,7 +12,7 @@ div.card-container {
   display: flex;
   flex-flow: row nowrap;
   justify-content: center;
-  align-items: start;
+  align-items: flex-start;
 
   mat-card {
     flex-basis: 75vw;
