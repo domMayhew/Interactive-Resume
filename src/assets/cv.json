@@ -34,7 +34,7 @@
             {
               "id": "batchErrors",
               "label": "Catch and Handle Batch Job Errors",
-              "description": "Batch jobs needed a configuration option to fail and stop processing when any of its children failed. I *designed* a few different solutions and *collaborated with cross-team stakeholders* to choose the best design, implement the design, and write *automated tests*. I demonstrated *flexible* when we decided to switch to a different design after implementation.",
+              "description": "Batch jobs needed a configuration option to fail and stop processing when any of its children failed. I *designed* a few different solutions and *collaborated with cross-team stakeholders* to choose the best design, implement the design, and write *automated tests*. I demonstrated *flexibility* when we decided to switch to a different design after implementation.",
               "neighbours": [
                 "crossteamCollaboration",
                 "architectureAndDesign",
@@ -456,7 +456,7 @@
       "children": [
         {
           "id": "flexible",
-          "label": "flexible"
+          "label": "Flexibility"
         },
         {
           "id": "leadership",
