@@ -1,0 +1,66 @@
+<h1 mat-dialog-title>Contact</h1>
+<ng-container *ngIf="!submitted">
+	<div mat-dialog-content
+		class="dialog-content">
+		<p>
+			Let Dominic know you'd like to get in touch!
+		</p>
+		<mat-form-field>
+			<mat-label>Name</mat-label>
+			<input [(ngModel)]="visitor.name"
+				matInput
+				required
+				matInput>
+		</mat-form-field>
+		<mat-form-field>
+			<mat-label>Company</mat-label>
+			<input [(ngModel)]="visitor.company"
+				matInput>
+		</mat-form-field>
+		<mat-form-field>
+			<mat-label>Phone</mat-label>
+			<input [(ngModel)]="visitor.phone"
+				matInput>
+		</mat-form-field>
+	</div>
+	<div class="dialog-actions"
+		mat-dialog-actions>
+		<button (click)="submit()"
+			mat-raised-button
+			color="primary">
+			Submit
+		</button>
+		<button (click)="noClick()"
+			mat-button
+			color="accent">
+			Cancel
+		</button>
+	</div>
+</ng-container>
+<ng-container *ngIf="submitted">
+	<mat-dialog-content>
+		<p>
+			{{previousVisitorsString()}}
+		</p>
+		<ul>
+			<ng-container *ngFor="let visitor of visitors">
+				<li>{{visitor.name}}</li>
+				<ul>
+					<li>
+						Company: {{visitor.company}}
+					</li>
+					<li>
+						Phone: {{visitor.phone}}
+					</li>
+				</ul>
+			</ng-container>
+		</ul>
+	</mat-dialog-content>
+	<mat-dialog-actions class="dialog-actions">
+		<button mat-dialog-close
+			mat-raised-button
+			color="primary">
+			I can wait!
+		</button>
+	</mat-dialog-actions>
+</ng-container>

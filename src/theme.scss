@@ -1,71 +1,66 @@
 @use '@angular/material' as mat;
-@use '@angular/material/theming';
 @use 'sass:map';
 
 // Palettes
-$palette-primary: (
-  50 : #f9fffa,
-  100 : #f1fff4,
-  200 : #e8ffec,
-  300 : #deffe4,
-  400 : #d7ffdf,
-  500 : #d0ffd9,
-  600 : #cbffd5,
-  700 : #c4ffcf,
-  800 : #beffca,
-  900 : #b3ffc0,
-  A100 : #ffffff,
-  A200 : #ffffff,
-  A400 : #ffffff,
-  A700 : #ffffff,
-  contrast: (50 : #000000,
-    100 : #000000,
-    200 : #000000,
-    300 : #000000,
-    400 : #000000,
-    500 : #000000,
-    600 : #000000,
-    700 : #000000,
-    800 : #000000,
-    900 : #000000,
-    A100 : #000000,
-    A200 : #000000,
-    A400 : #000000,
-    A700 : #000000,
-  )
-);
+$palette-primary: mat.define-palette((50: #f9fffa,
+      100 : #f1fff4,
+      200 : #e8ffec,
+      300 : #deffe4,
+      400 : #d7ffdf,
+      500 : #d0ffd9,
+      600 : #cbffd5,
+      700 : #c4ffcf,
+      800 : #beffca,
+      900 : #b3ffc0,
+      A100 : #ffffff,
+      A200 : #ffffff,
+      A400 : #ffffff,
+      A700 : #ffffff,
+      contrast: (50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #000000,
+        600 : #000000,
+        700 : #000000,
+        800 : #000000,
+        900 : #000000,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+      )), 500, 300, 800);
 
-$palette-accent: (
-  50 : #f5ebe8,
-  100 : #e6ccc6,
-  200 : #d6aba1,
-  300 : #c5897b,
-  400 : #b86f5e,
-  500 : #ac5642,
-  600 : #a54f3c,
-  700 : #9b4533,
-  800 : #923c2b,
-  900 : #822b1d,
-  A100 : #ffc5be,
-  A200 : #ff998b,
-  A400 : #ff6c58,
-  A700 : #ff553e,
-  contrast: (50 : #000000,
-    100 : #000000,
-    200 : #000000,
-    300 : #000000,
-    400 : #000000,
-    500 : #ffffff,
-    600 : #ffffff,
-    700 : #ffffff,
-    800 : #ffffff,
-    900 : #ffffff,
-    A100 : #000000,
-    A200 : #000000,
-    A400 : #000000,
-    A700 : #000000,
-  )
-);
+$palette-accent: mat.define-palette((50 : #f5ebe8,
+      100 : #e6ccc6,
+      200 : #d6aba1,
+      300 : #c5897b,
+      400 : #b86f5e,
+      500 : #ac5642,
+      600 : #a54f3c,
+      700 : #9b4533,
+      800 : #923c2b,
+      900 : #822b1d,
+      A100 : #ffc5be,
+      A200 : #ff998b,
+      A400 : #ff6c58,
+      A700 : #ff553e,
+      contrast: (50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+      )), 500, 300, 800);
 
 $palette-warn: mat.define-palette(mat.$red-palette);
 $background-color: #444444;
@@ -78,18 +73,17 @@ $typography-body: mat.define-typography-config($font-family: "Open Sans");
 $typography-headers: mat.define-typography-config($font-family: "Roboto");
 
 // Theme
-$theme: mat.define-light-theme((color: (primary: $palette-primary,
-        accent: $palette-accent,
-        warn: $palette-warn,
+$theme: mat.define-light-theme(("color": ("primary": $palette-primary,
+        "accent": $palette-accent,
       ),
-      typography: $typography-body));
+      typography: $typography-body,
+      density: 0));
 
 $theme-roboto: mat.define-light-theme((color: (primary: $palette-primary,
         accent: $palette-accent,
-        warn: $palette-warn,
       ),
-      typography: $typography-headers));
-
+      typography: $typography-headers,
+      density: 0));
 
 @mixin get-typography($level, $requested-theme: $theme) {
   $typography-config: mat.get-typography-config($requested-theme);
@@ -111,5 +105,4 @@ $theme-roboto: mat.define-light-theme((color: (primary: $palette-primary,
   $palette: map.get($color-config, $paletteName);
   $color: mat.get-color-from-palette($palette, $hue);
   @return $color;
-
 }

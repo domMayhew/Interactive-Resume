@@ -3,6 +3,8 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
 import { NgxGraphModule } from '@swimlane/ngx-graph';
 import { ResumeService } from './services/resume/resume.service';
+import { RegisterComponent } from './register/register.component';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
@@ -10,10 +12,12 @@ describe('AppComponent', () => {
       imports: [
         RouterTestingModule,
         NgxGraphModule,
+        MatDialogModule,
       ],
-      providers: [ResumeService],
+      providers: [ResumeService, MatDialog],
       declarations: [
-        AppComponent
+        AppComponent,
+        RegisterComponent
       ],
     }).compileComponents();
   });

@@ -273,21 +273,6 @@
           ]
         },
         {
-          "id": "exemplar-project",
-          "label": "Example and Test Enablement App",
-          "language": "JavaScript",
-          "github": "https://github.com/visier/embedding-exemplar",
-          "description": "During my coop at Visier, I created a public repo of a locally-hosted web application that embeds Visier's software in less than five minutes configuration. Visier's offerings include an embedded SasS product for enterprise customers. Those customers often found onboarding challenging. Embedding a SasS product into your own has complications surrounding CORS policies, cross-site scripting, and authentication (in this case, SAML 2.0). I wrote an application that provided:\n\n1. A live example of embedding Visier's software in **less than five minutes configuration**.\n1. Example code that users could duplicate in their own application.\n1. A live reference of working SAML authentications.\n1. Extensive technical documentation.\n\nThe project is published on [Visier's public GitHub](https://github.com/visier/embedding-exemplar).",
-          "neighbours": [
-            "exemplar",
-            "express",
-            "network-protocols",
-            "technicalDocumentation",
-            "javascript",
-            "saml"
-          ]
-        },
-        {
           "id": "calculator",
           "label": "Live Feedback Calculator",
           "language": "Android App",

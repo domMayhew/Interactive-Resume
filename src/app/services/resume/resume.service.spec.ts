@@ -2,10 +2,10 @@ import { TestBed } from '@angular/core/testing';
 
 import { ResumeService } from './resume.service';
 import { validate } from 'typia';
-import { Resume, ResumeTree } from '../../models/resume.model';
+import { Resume, ResumeTree } from './resume.model';
 import * as _ from 'lodash';
 import { Edge } from '@swimlane/ngx-graph';
-import { ConfigService } from '../config-service';
+import { ConfigService } from '../config/config-service';
 
 const testResume: Resume = {
   bio: { id: "", label: "", description: "" },

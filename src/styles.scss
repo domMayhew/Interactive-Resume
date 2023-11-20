@@ -2,10 +2,14 @@
 
 @use '@angular/material' as mat;
 @use './theme.scss' as theme;
-// Include common, non-theme-dependent styles for material components
+
 @include mat.core();
-// Include common, theme-dependent styles for material components
 @include mat.core-theme(theme.$theme);
+@include mat.dialog-theme(theme.$theme);
+@include mat.form-field-theme(theme.$theme);
+@include mat.input-theme(theme.$theme);
+@include mat.button-theme(theme.$theme);
+@include mat.fab-theme(theme.$theme);
 
 html,
 body {

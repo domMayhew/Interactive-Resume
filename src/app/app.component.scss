@@ -15,6 +15,12 @@ app-bio {
   left: 0.5rem;
 }
 
+app-register {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+}
+
 // Prevent text SVG elements from stealing 'hover' from its parent
 svg text {
   pointer-events: none;
@@ -30,6 +36,10 @@ svg text {
 
 .double {
   fill: darken(theme.get-color(primary, 500), 30%);
+}
+
+.node-text.expandable {
+  font-weight: bold;
 }
 
 path.connected,

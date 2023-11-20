@@ -14,7 +14,9 @@
 		[animate]="false"
 		[layout]="layout"
 		[layoutSettings]="layoutSettings"
-		[zoomLevel]="0.45">
+		[zoomLevel]="config.zoom.initial"
+		[maxZoomLevel]="config.zoom.max"
+		[minZoomLevel]="config.zoom.min">
 
 		<ng-template #nodeTemplate
 			let-node>
@@ -65,7 +67,7 @@
 							<!-- Label -->
 							<text [attr.x]="nodeWidth(node)/2"
 								[attr.y]="nodeHeight(node)/2"
-								class="node-text"
+								[class]="isExpandable(node) ? 'node-text expandable' : 'node-text'"
 								text-anchor="middle"
 								dominant-baseline="middle">
 								{{node.label}}

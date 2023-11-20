@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { ConfigService } from '../services/config-service';
-import { Info } from '../models/resume.model';
+import { ConfigService } from '../services/config/config-service';
+import { Info } from '../services/resume/resume.model';
 
 @Component({
   selector: 'app-bio',

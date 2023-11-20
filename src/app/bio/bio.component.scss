@@ -4,12 +4,10 @@
   stroke: theme.get-color(primary, A700)
 }
 
-.bio-textbox {
-  fill: theme.get-color(primary, A100);
-  stroke: theme.get-color(primary, A700);
-  stroke-width: 10;
+#bio-button {
+  @include theme.get-typography(body-1);
 }
 
-text.bio-label {
-  @include theme.get-font-family(headline-1);
+#bio-svg {
+  cursor: pointer
 }

@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { Node, Edge, Graph } from '@swimlane/ngx-graph';
 import { ResumeService } from './services/resume/resume.service';
-import { Experience, Resume, ResumeTree, Info } from './models/resume.model';
-import { ConfigService } from './services/config-service';
+import { Experience, Resume, ResumeTree, Info } from './services/resume/resume.model';
+import { Observable, Subject } from 'rxjs';
+import { ConfigService } from './services/config/config-service';
 import typia from 'typia';
 
 @Component({

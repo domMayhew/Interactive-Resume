@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import jsonResume from '../../assets/cv.json';
+import jsonResume from '../../../assets/cv.json';
 @Injectable({
   providedIn: 'root'
 })
@@ -100,25 +100,33 @@ export class ConfigService {
     }
   }
 
+  public readonly profileRawDimension = {
+    width: 1597,
+    height: 1597
+  }
+
+  public readonly profileCircleActualDimension = {
+    cx: 37.5,
+    cy: 37.5,
+    r: 75
+  }
+
   public readonly bio = {
-    profile: {
-      width: 2540,
-      height: 2540
-    },
-    circle: {
-      cx: 50,
-      cy: 50,
-      r: 50
-    },
     textbox: {
       actualWidth: 110,
       actualHeight: 30,
-      width: 110 * 2540 / (50 * 2),
-      height: 30 * 2540 / (50 * 2),
-      rx: 2 * 2540 / (50 * 2),
-      ry: 2 * 2540 / (50 * 2),
+      width: 110 * this.profileRawDimension.width / (this.profileCircleActualDimension.r * 2),
+      height: 30 * this.profileRawDimension.height / (this.profileCircleActualDimension.r * 2),
+      rx: 2 * this.profileRawDimension.width / (this.profileCircleActualDimension.r * 2),
+      ry: 2 * this.profileRawDimension.height / (this.profileCircleActualDimension.r * 2),
     },
     strokeWidth: 30
+  }
+
+  public readonly zoom = {
+    initial: 0.45,
+    max: 0.9,
+    min: 0.45
   }
 
   public readonly layout = "dagreCluster";

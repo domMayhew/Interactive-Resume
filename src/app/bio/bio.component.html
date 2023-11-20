@@ -1,43 +1,38 @@
-<svg [attr.width]="config.bio.circle.r*2 + config.bio.textbox.actualWidth"
-	[attr.height]="config.bio.circle.r*2"
-	attr.viewBox="0 0 {{config.bio.profile.width + config.bio.textbox.width}} {{config.bio.profile.height}}"
-	xmlns="http://www.w3.org/2000/svg">
-	<defs>
-		<!-- Image clip path -->
-		<clipPath id="profile-clip">
-			<circle [attr.cx]="config.bio.profile.width/2"
-				[attr.cy]="config.bio.profile.height/2"
-				[attr.r]="config.bio.profile.width/2"
-				id="circle"></circle>
-		</clipPath>
-	</defs>
-	<!-- Text border/background -->
-	<rect [attr.rx]="config.bio.textbox.rx"
-		[attr.ry]="config.bio.textbox.ry"
-		[attr.x]="config.bio.profile.width - 100"
-		[attr.y]="config.bio.profile.height/2-config.bio.textbox.height/2"
-		[attr.width]="config.bio.textbox.width"
-		[attr.height]="config.bio.textbox.height"
-		class="bio-textbox">
-	</rect>
-	<text [attr.x]="config.bio.profile.width + 150"
-		[attr.y]="config.bio.profile.height/2+50"
-		class="bio-label"
-		id="bio-label"
-		dominant-baseline="middle"
-		font-size="500">
-		{{bio.label}}
-	</text>
-	<!-- Image -->
-	<image class="bio"
-		clip-path="url(#profile-clip)"
-		href="assets/images/profile.jpg"></image>
-	<!-- Border -->
-	<circle [attr.cx]="config.bio.profile.width/2"
-		[attr.cy]="config.bio.profile.height/2"
-		[attr.r]="config.bio.profile.width/2-config.bio.strokeWidth/2"
-		[attr.stroke-width]="config.bio.strokeWidth"
-		class="bio-border"
-		id="circle"
-		fill="none"></circle>
-</svg>
+<div>
+	<svg [attr.width]="config.profileCircleActualDimension.r*2 + config.bio.textbox.actualWidth"
+		[attr.height]="config.profileCircleActualDimension.r*2"
+		attr.viewBox="0 0 {{config.profileRawDimension.width + config.bio.textbox.width}} {{config.profileRawDimension.height}}"
+		xmlns="http://www.w3.org/2000/svg"
+		id="bio-svg">
+		<defs>
+			<!-- Image clip path -->
+			<clipPath id="profile-clip">
+				<circle [attr.cx]="config.profileRawDimension.width/2"
+					[attr.cy]="config.profileRawDimension.height/2"
+					[attr.r]="config.profileRawDimension.width/2"
+					id="circle"></circle>
+			</clipPath>
+		</defs>
+		<!-- Image -->
+		<image class="bio"
+			clip-path="url(#profile-clip)"
+			href="assets/images/profile.jpg"></image>
+		<!-- Border -->
+		<circle [attr.cx]="config.profileRawDimension.width/2"
+			[attr.cy]="config.profileRawDimension.height/2"
+			[attr.r]="config.profileRawDimension.width/2-config.bio.strokeWidth/2"
+			[attr.stroke-width]="config.bio.strokeWidth"
+			class="bio-border"
+			id="circle"
+			fill="none"></circle>
+	</svg>
+	<button [attr.style]="'position: absolute;' +
+	'left: ' + (config.profileCircleActualDimension.r*2-10) + 'px;' +
+	'top: ' + (config.profileCircleActualDimension.r - config.bio.textbox.actualHeight/2) + 'px;' +
+	'z-index: -1;'"
+		mat-raised-button
+		id="bio-button"
+		color="accent">
+		About Me
+	</button>
+</div>
