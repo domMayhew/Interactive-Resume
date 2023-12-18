@@ -127,7 +127,7 @@
             {
               "id": "web-based-info-systems",
               "label": "Web-based Information Systems",
-              "grade": "In progress",
+              "grade": "A+",
               "level": 400
             },
             {
@@ -148,7 +148,7 @@
             {
               "id": "distributed-class",
               "label": "Distributed Programming",
-              "grade": "In progress",
+              "grade": "B+",
               "level": 400,
               "neighbours": [
                 "network-protocols",
@@ -257,8 +257,38 @@
           "neighbours": [
             "angular",
             "typescript",
-            "automatedTesting"
+            "automatedTesting",
+            "web-based-info-systems"
           ]
+        },
+        {
+          "id": "auto-water",
+          "label": "Automatic Plant Watering System",
+          "language": "C/Embedded Software",
+          "description": "./markdown/auto-water.md",
+          "neighbours": [
+            "embedded-skill",
+            "cpp",
+            "self-teaching",
+            "resourceful"
+          ]
+        },
+        {
+          "id": "simplicious",
+          "label": "Simplicious",
+          "language": "Angular/TypeScript",
+          "description": "./markdown/simplicious.md",
+          "neighbours": [
+            "angular",
+            "typescript"
+          ]
+        },
+        {
+          "id": "calculator",
+          "label": "Live Feedback Calculator",
+          "language": "Android App",
+          "github": "https://github.com/domMayhew/Calculator-App",
+          "description": "A calculator that provides live feedback regarding errors and the value of completed subexpressions. Errors are highlighted as you enter them, and some errors are only highlighted if you try to evaluate the expression (e.g., an unclosed subexpression). There's still a few bugs, but it was above and beyond the requirements for the assignment.\n\n<img src='assets/images/calculator.png' width=200/>"
         },
         {
           "id": "nqueens",
@@ -271,13 +301,6 @@
             "functional-programming",
             "haskell"
           ]
-        },
-        {
-          "id": "calculator",
-          "label": "Live Feedback Calculator",
-          "language": "Android App",
-          "github": "https://github.com/domMayhew/Calculator-App",
-          "description": "A calculator that provides live feedback regarding errors and the value of completed subexpressions. Errors are highlighted as you enter them, and some errors are only highlighted if you try to evaluate the expression (e.g., an unclosed subexpression). There's still a few bugs, but it was above and beyond the requirements for the assignment.\n\n<img src='assets/images/calculator.png' width=200/>"
         }
       ]
     },
@@ -332,6 +355,10 @@
         {
           "id": "ai-skill",
           "label": "Implement simple AI models"
+        },
+        {
+          "id": "embedded-skill",
+          "label": "Design and Develop Embedded Systems"
         }
       ]
     },
@@ -456,7 +483,7 @@
       "children": [
         {
           "id": "flexible",
-          "label": "Flexibility"
+          "label": "Flexible"
         },
         {
           "id": "leadership",
@@ -465,6 +492,14 @@
         {
           "id": "resourceful",
           "label": "Resourceful"
+        },
+        {
+          "id": "self-teaching",
+          "label": "Self-teaching"
+        },
+        {
+          "id": "communication-trait",
+          "label": "Strong communicator"
         }
       ]
     }

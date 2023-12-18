@@ -11,7 +11,7 @@ export class ConfigService {
 
   public readonly layoutSettings = {
     multigraph: false,
-    nodePadding: 0,
+    nodePadding: 20,
     edgePadding: 45,
     rankPadding: 100,
     orientation: "LR",

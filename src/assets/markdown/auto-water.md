@@ -1,0 +1,9 @@
+I am in the prototyping phase of creating an automatic plant watering product. While many other plant watering embedded systems on the market have nice aesthetics and can water multiple plants, they are relatively expensive, take up shelf-/floor-space, and generally work on a timer rather than measured soil moisture levels. My plant watering device requires no additional space by sharing space with the plant, allows the user to set the desired soil moisture leve, and is very affordable.
+
+It is implemented as a microcontroller (MSP430) on a PCB (designed by myself) embedded in a 3D printed chassis. An upside-down, empty disposable water bottle screws into the 3D printed chassis, which plants into the soil, taking up no additional shelf-space. The microcontroller uses single slope ADC to measure the moisture resistance of the soil, approximating moisture content. The user presses a button on the device when the soil is at the dryest level the user desires, and the device waters whenever the soil reaches that level.
+
+Through this project I learned how to break problems down into smaller components. Microcontrollers have several independently operating systems (CPU, timer modules, comparators, etc.). Thinking of ways to test each component of my software system independently will help me break down software problems into testable components in the future.
+
+This project was almost entirely self-taught. This project was for my embedded/robotics course, but very little of the knowledge and skills required for this project was taught in the course. I have learned about low-level communication protocols including I2C, SPI, UART, and JTAG; PCB design and production; electrical concepts such as using a MOSFET as a switch; and analog signal processing.
+
+![A 3D rendering of the PCB](assets/images/auto-water-3d.png)
